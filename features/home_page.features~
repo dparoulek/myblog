@@ -1,0 +1,6 @@
+Feature: Home Page
+
+  So that I can learn about Dave
+  As an anonymous user
+  I want to view the blog's homepage
+  
