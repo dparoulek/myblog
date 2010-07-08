@@ -1,0 +1,15 @@
+require 'spec_helper'
+
+describe LoginController, "POST create" do
+
+  it "logs a user in" do
+    login
+    user = User.find_by_email(:params[email])
+    user.authenticate(:params)
+    
+  end
+  
+
+  it "logs a user out"
+
+end
