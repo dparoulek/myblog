@@ -1,26 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  email: 
-  password: 
-
-two:
-  email: 
-  password: 
-
-test:
-  email: test@email.com
-  password: test
-
+notes:
+  path: /Users/dparoulek/notes
+  id: 1
 
 # == Schema Information
 #
-# Table name: people
+# Table name: git_repos
 #
 #  id         :integer         not null, primary key
+#  path       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  email      :string(255)
-#  password   :string(255)
 #
 

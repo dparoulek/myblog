@@ -1,5 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :git_repos
+
   # The priority is based upon order of creation: first created -> highest priority.
+
+  map.connect 'login', :controller => 'login', :action => 'index', :conditions => { :method => :get }
+  map.connect 'login', :controller => 'login', :action => 'login', :conditions => { :method => :post }
+  
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'

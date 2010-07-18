@@ -1,0 +1,16 @@
+<h1>Editing git_repo</h1>
+
+<% form_for(@git_repo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @git_repo %> |
+<%= link_to 'Back', git_repos_path %>

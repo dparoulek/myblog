@@ -1,0 +1,20 @@
+<h1>Listing git_repos</h1>
+
+<table>
+  <tr>
+    <th>Path</th>
+  </tr>
+
+<% @git_repos.each do |git_repo| %>
+  <tr>
+    <td><a href="/git/ls/<%= git_repo.id %>"><%=h git_repo.path %></a></td>
+    <td><%= link_to 'Show', git_repo %></td>
+    <td><%= link_to 'Edit', edit_git_repo_path(git_repo) %></td>
+    <td><%= link_to 'Destroy', git_repo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New git_repo', new_git_repo_path %>

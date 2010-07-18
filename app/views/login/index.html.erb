@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h3>Login</h3>
 <% form_tag('/login')  do -%>
 <p>
