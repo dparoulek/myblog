@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe GitReposController do
-
   def mock_git_repo(stubs={})
     @mock_git_repo ||= mock_model(GitRepo, stubs)
   end
@@ -128,4 +127,35 @@ describe GitReposController do
     end
   end
 
+  describe "GET list" do
+    before(:each) do
+      path = "../tmp-git-repo"
+      @repo = mock_git_repo(:name => "test", :path => File.expand_path(path))
+    end
+
+    it "should list folders and files from root of git repository" do
+      GitRepo.stub(:find).and_return(@repo)
+      post :list, :id => 1
+      assigns[:cwd].contents.collect { |entry| entry.name }.should include("todo.org")
+    end
+
+    it "should list folders and files from root of git repository by name"
+
+    it "should map urls to git paths" do
+      params_from(:get, "/notes/personal/cooking").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["personal", "cooking"]}
+      GitRepo.stub(:find_by_name).and_return(@repo)
+      post :list, :name => "notes", :path => ["personal"]
+      assigns[:cwd].contents.length.should >= 0
+    end
+
+    it "should redirect to home with error message when user attempts to navigate to invalid path"
+
+    it "should branch project before editing files"
+
+    it "should display contents of files" do
+      GitRepo.stub(:find_by_name).and_return(@repo)
+      post :list, :name => "notes", :path => ["personal", "cooking", "grill.mkdwn"]
+      assigns[:blob].data.should include("Aunt Debbie's famous bbq sauce")
+    end
+  end
 end

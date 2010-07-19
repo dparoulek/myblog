@@ -5,7 +5,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'login', :controller => 'login', :action => 'index', :conditions => { :method => :get }
   map.connect 'login', :controller => 'login', :action => 'login', :conditions => { :method => :post }
-  
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
@@ -46,4 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
+  # Map all other requests to git controller to see if any connected git repositories contain the path
+  map.connect ':name/*path', :controller => 'git_repos', :action => 'list'
 end

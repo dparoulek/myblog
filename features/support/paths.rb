@@ -14,7 +14,6 @@ module NavigationHelpers
     when /the login page/
       '/login'
 
-
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i

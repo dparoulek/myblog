@@ -3,19 +3,23 @@ require 'spec_helper'
 describe GitRepo do
   before(:each) do
     @valid_attributes = {
-      :path => "value for path"
+      :path => "/Users/test/test",
+      :name => "test"
     }
   end
 
-  it "should expand ~ into home directory path" do
-    repo = GitRepo.create!(:path => "~/notes")
-    repo.path.should == "/Users/dparoulek/notes"
+  it "should expand shell globs into absolute file paths" do
+    repo = GitRepo.create!(:path => "~", :name => "notes")
+    repo.path.should == File.expand_path("~")
+    repo = GitRepo.create!(:path => "../..", :name => "notes")
+    repo.path.should == File.expand_path("../..")
   end
 
   it "should create a new instance given valid attributes" do
     GitRepo.create!(@valid_attributes)
   end
 end
+
 
 # == Schema Information
 #
@@ -25,5 +29,6 @@ end
 #  path       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  name       :string(255)
 #
 

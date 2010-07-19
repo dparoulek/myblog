@@ -18,6 +18,7 @@ Feature: Authentication and Authorization
 
   Scenario: Authenticate via html form
     Given I am on the login page
+    And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     When I fill in "dparoulek@gmail" for "Email"
     And I fill in "test" for "Password"
     And I press "Login"

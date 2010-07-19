@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100717201313) do
+ActiveRecord::Schema.define(:version => 20100718191338) do
 
   create_table "git_repos", :force => true do |t|
     t.string   "path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "people", :force => true do |t|

@@ -1,4 +1,42 @@
 class GitReposController < ApplicationController
+  include Grit
+
+  def list
+    begin
+      if(params[:name])
+        repo = GitRepo.find_by_name(params[:name])
+      else 
+        repo = GitRepo.find(params[:id])
+      end
+
+      grit = Repo.new(repo.path)
+
+      # :path is present because we have a tricky catch-all route set
+      # up. See the last entry in routes.rb. :path will be an array of
+      # subdirs. The last entry in the :path array might be a file
+      # name. '/' is actually a method on Grit:Rep that takes a path as a
+      # parameter.
+      if(params[:path]) 
+        abspath = params[:path] * '/'
+        grit_obj = grit.tree/abspath
+      else 
+        grit_obj = grit.tree
+      end
+
+      if(grit_obj.is_a?(Grit::Blob))
+        @blob = grit_obj
+        render :action => "file"
+      else # render list.html.erb
+        @cwd = grit_obj
+      end
+    rescue
+      logger.error("Unable to find repository given params: #{params}")
+      flash[:notice] = "Unable to find git repository?!"
+      flash[:error] = $!
+      redirect_to "/"
+    end
+  end
+
   # GET /git_repos
   # GET /git_repos.xml
   def index

@@ -1,8 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 notes:
-  path: /Users/dparoulek/notes
-  id: 1
 
 # == Schema Information
 #
@@ -12,5 +10,6 @@ notes:
 #  path       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  name       :string(255)
 #
 
