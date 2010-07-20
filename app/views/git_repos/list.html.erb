@@ -1,10 +1,6 @@
 <h3><%= @cwd.name %></h3>
 <ul>
-<% @cwd.trees.each do |entry| %>
+<% @cwd.contents.each do |entry| %>
 <li><a href="<%= "#{request.request_uri}/#{entry.name}" %>" ><%= entry.name %></a></li>
-<% end %>
-
-<% @cwd.blobs.each do |entry| %>
-<li><%= entry.name %></li>
 <% end %>
 </ul>
