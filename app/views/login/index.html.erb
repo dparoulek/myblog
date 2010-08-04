@@ -2,6 +2,13 @@
 <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<% if logged_in? %>
+
+<p> You are currently logged in as <%= current_user.email %> </p>
+<a href="/logout">Logout</a>
+
+<% else %>
+
 <h3>Login</h3>
 <% form_tag('/login')  do -%>
 <p>
@@ -16,4 +23,6 @@
 <%= submit_tag "Login" %>
 </p>
 <% end -%>
+
+<% end %>
 

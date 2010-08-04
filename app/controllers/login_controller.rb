@@ -1,5 +1,4 @@
 class LoginController < ApplicationController
-
   def index
     flash.keep
   end
@@ -10,11 +9,12 @@ class LoginController < ApplicationController
 
     flash[:notice] = "Login Invalid"
     if (someone) then
-      session[:person] = someone
+      session[:person] = someone.id
       flash[:notice] = "Logged In Successfully!"
     end
 #    render :template => "login/index"
 #     redirect_to(session[:return_to] || "/")
     render :action => "index"
   end
+
 end

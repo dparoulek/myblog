@@ -10,6 +10,11 @@ class Person < ActiveRecord::Base
     end
   end
 
+  # Return logged in person object. Otherwise return nil
+  def self.loggedin?()
+    return session[:person]
+  end
+
 end
 
 
