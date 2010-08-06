@@ -12,8 +12,8 @@ Feature: Authentication and Authorization
   Scenario: Login via html form
     Given I am on the login page
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
-    When I fill in "dparoulek@gmail" for "Email"
-    And I fill in "test" for "Password"
+    When I fill in "dparoulek@gmail" for "email"
+    And I fill in "test" for "password"
     And I press "Login"
     Then I should see "Logged In Successfully!"
     And I should see "Logout"
@@ -22,10 +22,16 @@ Feature: Authentication and Authorization
     Given that I have registered an account using "dparoulek@gmail" as username and "test" as password	
     And that I am logged in
     When I am on the login page
-    And I press "Logout" 
-    Then I should see "Logged Out Successfully!"
+    And I follow "Logout"
+    Then I should see "You logged out successfully"
     And I should see "Login"
 
+  Scenario: Not able to access pages unless logged in
+    Given that I am not logged in
+    When I visit "/people"
+    Then I should see "Please log in to see this page"
+    And I should see "Login"
+    
   Scenario: Login via basic auth
 
   Scenario: Login via ssh key
@@ -35,13 +41,6 @@ Feature: Authentication and Authorization
   Scenario: Create user
 
   Scenario: Restrict access to pages
-    Given I am unauthorized to access a page
-    When I attempt to navigate to that page
-    Then I should be redirected to the login page
 
   Scenario: Redirect back to original page
-    Given I am unauthorized to access a page
-    When I am redirected to login page
-    And I login successfully
-    Then I should be taken back to the original page that I requested
   

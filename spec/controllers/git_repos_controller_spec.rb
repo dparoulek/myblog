@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe GitReposController do
+  before( :each ) do
+    controller.stub!(:auth_required)
+  end
+
   def mock_git_repo(stubs={})
     @mock_git_repo ||= mock_model(GitRepo, stubs)
   end
@@ -153,7 +157,11 @@ describe GitReposController do
       assigns[:cwd].contents.length.should >= 0
     end
 
-    it "should redirect to home with error message when user attempts to navigate to invalid path"
+    it "should redirect to not_found with error message when user attempts to navigate to invalid path" do
+      params_from(:get, "/no-where").should == {:controller => "git_repos", :action => "list", :name => "no-where", :path => []} 
+      post :list, :name => "no-where", :path => []
+      response.should render_template('not_found')
+    end
 
     it "should branch project before editing files"
 

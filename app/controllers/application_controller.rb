@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   require 'guarddog/authentication'
   include GuardDog::Authentication
 
+  before_filter :auth_required
+  
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 end

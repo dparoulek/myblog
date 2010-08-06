@@ -12,11 +12,12 @@ Given /^that I am not logged in$/ do
   response.should_not contain "Logout"
 end
 
-Given /^that I am logged in$/ do |email|
+Given /^that I am logged in$/ do
   visit "/login"
-  fill_in("Email", :with => @username)
-  fill_in("Password", :with => @password)
+  fill_in("email", :with => @username)
+  fill_in("password", :with => @password)
   click_button("Login")
+  response.should contain("You are currently logged in as #{@username}")
 end
 
 Then /^I should be logged in$/ do

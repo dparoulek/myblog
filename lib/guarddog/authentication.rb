@@ -11,10 +11,10 @@ module GuardDog
       def self.extended(controller)
         # We want these to be available to view too, so make them
         # helpers
-        controller.helper_method :current_user, :logged_in?
+        controller.helper_method :current_user, :logged_in?, :auth_required
         # We're mixing these into a controller, but we don't want them
         # to be controller actions
-        controller.hide_action :current_user, :logged_in?
+        controller.hide_action :current_user, :logged_in?, :auth_required
       end
     end
 
@@ -31,6 +31,18 @@ module GuardDog
 
       def current_user
         @current_user ||= session[:person] ? Person.find(session[:person]) : nil
+      end
+
+      def authorized?
+        logged_in?
+      end
+
+      def auth_required
+        unless authorized?
+          session[:return_to] = request.request_uri
+          flash[:notice] = "Please log in to see this page"
+          render :template => "login/index"
+        end
       end
     end
 

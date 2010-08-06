@@ -1,38 +1,49 @@
 class GitReposController < ApplicationController
   def list
-    begin
-      if(params[:name])
-        repo = GitRepo.find_by_name(params[:name])
-      else 
-        repo = GitRepo.find(params[:id])
-      end
+    #     begin
+    repo = nil
+    if(params[:name])
+      logger.debug("Attemping to find git repo named #{params[:name]}")
+      repo = GitRepo.find_by_name(params[:name])
+    end
 
-      # :path is present because we have a tricky catch-all route set
-      # up. See the last entry in routes.rb. :path will be an array of
-      # subdirs. The last entry in the :path array might be a file
-      # name. '/' is actually a method on Grit:Rep that takes a path as a
-      # parameter.
-      if(params[:path] && !params[:path].empty?)
-        abspath = params[:path] * '/'
-        if(repo.is_a_file?(abspath))
-          @blob = repo.getFile(abspath)
-          @content = repo.convert(abspath)
-          render :action => "file"          
-        else 
-          @cwd = repo.open(abspath)
-          render :action => "list"
-        end
-      else
-        @cwd = repo.open
+    if(params[:id])
+      repo = GitRepo.find(params[:id])
+    end
+
+    unless(repo) 
+      render :action => 'not_found'
+      return
+    end 
+
+    # :path is present because we have a tricky catch-all route set
+    # up. See the last entry in routes.rb. :path will be an array of
+    # subdirs. The last entry in the :path array might be a file
+    # name. '/' is actually a method on Grit:Rep that takes a path as a
+    # parameter.
+    if(params[:path] && !params[:path].empty?)
+      abspath = params[:path] * '/'
+      if(repo.is_a_file?(abspath))
+        @blob = repo.getFile(abspath)
+        @content = repo.convert(abspath)
+        render :action => "file"          
+      else 
+        @cwd = repo.open(abspath)
         render :action => "list"
       end
-    rescue
-      logger.error("Unable to find repository given params: #{params}")
-      flash[:notice] = "Unable to find git repository?!"
-      flash[:error] = $!
-#      redirect_to "/"
-      raise
+    else
+      @cwd = repo.open
+      render :action => "list"
     end
+    #     rescue ActiveRecord::RecordNotFound
+    #       logger.error("Unable to find repository given params: #{params}")
+    #       flash[:notice] = "Unable to find git repository?!"
+    #       flash[:error] = $!
+    #       redirect_to :action => 'not_found'
+    #     end
+  end
+
+  def not_found
   end
 
   # GET /git_repos

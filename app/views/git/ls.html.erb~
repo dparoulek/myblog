@@ -1,5 +1,0 @@
-<ul>
-<% listing.each do |entry| %>
-<li><%= entry %></li>
-<% end %>
-</ul>
