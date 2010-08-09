@@ -3,12 +3,15 @@ class GitReposController < ApplicationController
     #     begin
     repo = nil
     if(params[:name])
-      logger.debug("Attemping to find git repo named #{params[:name]}")
+      logger.debug("Attemping to find git repo by name '#{params[:name]}'")
       repo = GitRepo.find_by_name(params[:name])
+      if repo then logger.debug("Found git repo by name '#{repo.name}'") end
     end
 
     if(params[:id])
+      logger.debug("Attemping to find git repo by ID '#{params[:id]}'")
       repo = GitRepo.find(params[:id])
+      if repo then logger.debug("Found git repo by ID '#{repo.id}'") end
     end
 
     unless(repo) 
@@ -21,18 +24,19 @@ class GitReposController < ApplicationController
     # subdirs. The last entry in the :path array might be a file
     # name. '/' is actually a method on Grit:Rep that takes a path as a
     # parameter.
-    if(params[:path] && !params[:path].empty?)
-      abspath = params[:path] * '/'
-      if(repo.is_a_file?(abspath))
-        @blob = repo.getFile(abspath)
-        @content = repo.convert(abspath)
-        render :action => "file"          
-      else 
-        @cwd = repo.open(abspath)
-        render :action => "list"
-      end
-    else
-      @cwd = repo.open
+    abspath = params[:path] && !params[:path].empty? ? params[:path] * '/' : '/'
+    if(repo.is_a_file?(abspath))
+      @git_repo_name = repo.name
+      @blob = repo.getFile(abspath)
+      @content = repo.convert(abspath)
+      @path = abspath
+      logger.debug("Displaying file named #{@blob.name} inside the #{@path} directory inside the '#{repo.name}' git repo")
+      render :action => "file"          
+    else 
+      @git_repo_name = repo.name
+      @cwd = repo.getDirectory(abspath)
+      @path = abspath
+      logger.debug("Listing files inside the #{@path} directory inside the '#{repo.name}' git repo")
       render :action => "list"
     end
     #     rescue ActiveRecord::RecordNotFound

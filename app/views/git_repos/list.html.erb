@@ -1,6 +1,6 @@
-<h3><%= @cwd.name %></h3>
+<p><%= @git_repo_name %></p>
 <ul>
 <% @cwd.contents.each do |entry| %>
-<li><a href="<%= "#{request.request_uri}/#{entry.name}" %>" ><%= entry.name %></a></li>
+<li><a href="<%= "/#{@git_repo_name}/#{@path=="/" ? "" : @path+"/"}#{entry.name}" %>" ><%= entry.name %></a></li>
 <% end %>
 </ul>
