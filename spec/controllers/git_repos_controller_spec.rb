@@ -166,9 +166,8 @@ describe GitReposController do
     it "should branch project before editing files"
 
     it "should display contents of files" do
-#       GitRepo.stub(:find_by_name).and_return(@repo)
       post :list, :name => "notes", :path => ["personal", "cooking", "grill.mkdwn"]
-      assigns[:blob].data.should include("Aunt Debbie's famous bbq sauce")
+      assigns[:node].contents.should include("Aunt Debbie's famous bbq sauce")
     end
   end
 end

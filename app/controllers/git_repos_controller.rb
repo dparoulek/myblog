@@ -26,11 +26,12 @@ class GitReposController < ApplicationController
     # parameter.
     abspath = params[:path] && !params[:path].empty? ? params[:path] * '/' : '/'
     if(repo.is_a_file?(abspath))
-      @git_repo_name = repo.name
-      @blob = repo.getFile(abspath)
-      @content = repo.convert(abspath)
-      @path = abspath
-      logger.debug("Displaying file named #{@blob.name} inside the #{@path} directory inside the '#{repo.name}' git repo")
+      blob = repo.getFile(abspath)
+      contents = blob.data
+      name = blob.name
+      path = abspath
+      logger.debug("Displaying file named #{name} inside the #{path} directory inside the '#{repo.name}' git repo")
+      @node = Node.create(:name => name, :contents => contents, :path => path)
       render :action => "file"          
     else 
       @git_repo_name = repo.name

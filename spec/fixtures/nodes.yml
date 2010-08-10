@@ -1,0 +1,24 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  path: MyString
+  contents: MyText
+
+two:
+  name: MyString
+  path: MyString
+  contents: MyText
+
+# == Schema Information
+#
+# Table name: nodes
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  path       :string(255)
+#  contents   :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+

@@ -42,16 +42,6 @@ class GitRepo < ActiveRecord::Base
     end
   end
 
-  def convert(path)
-    f = getFile(path).data
-    e = File.extname(path)
-    if(e =~ /mkdwn/i)
-      return RDiscount.new(f).to_html
-    else 
-      return f
-    end
-  end
-
 end
 
 

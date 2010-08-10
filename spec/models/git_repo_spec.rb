@@ -43,10 +43,6 @@ describe GitRepo do
       @repo.getFile(@path_to_file).data.should match "Debbie's famous bbq sauce"
     end
 
-    it "should convert a mkdwn file to html" do
-      @repo.is_a_file?(@path_to_file).should == true
-      @repo.convert(@path_to_file).should match "<h1>Chicken</h1>"
-    end
   end
 
 end
