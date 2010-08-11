@@ -34,6 +34,14 @@ class GitRepo < ActiveRecord::Base
     open(path)
   end
 
+  def getFileContents(path)
+    getFile(path).data
+  end
+
+  def getFileName(path)
+    getFile(path).name
+  end
+
   def open(path=nil)
     if(path)
       return repo.tree/path

@@ -31,7 +31,7 @@ class GitReposController < ApplicationController
       name = blob.name
       path = abspath
       logger.debug("Displaying file named #{name} inside the #{path} directory inside the '#{repo.name}' git repo")
-      @node = Node.create(:name => name, :contents => contents, :path => path)
+      @node = Node.create(:name => name, :git_repo_id => repo.id, :git_repo_path => path)
       render :action => "file"          
     else 
       @git_repo_name = repo.name

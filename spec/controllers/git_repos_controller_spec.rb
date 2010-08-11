@@ -167,7 +167,7 @@ describe GitReposController do
 
     it "should display contents of files" do
       post :list, :name => "notes", :path => ["personal", "cooking", "grill.mkdwn"]
-      assigns[:node].contents.should include("Aunt Debbie's famous bbq sauce")
+      assigns[:node].to_html.should include("Aunt Debbie's famous bbq sauce")
     end
   end
 end

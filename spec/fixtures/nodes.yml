@@ -10,15 +10,17 @@ two:
   path: MyString
   contents: MyText
 
+
+
 # == Schema Information
 #
 # Table name: nodes
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  path       :string(255)
-#  contents   :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer         not null, primary key
+#  name          :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  git_repo_id   :string(255)
+#  git_repo_path :string(255)
 #
 

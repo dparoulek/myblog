@@ -1,4 +1,4 @@
-Feature: Authentication and Authorization
+Feature: Authentication
 
   As myself
   I want to be able to prevent others from accessing my notes
