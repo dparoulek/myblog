@@ -1,4 +1,5 @@
 <ul>
-<li class="article">Hello World</li>
-<a href="/login">Login</a>
+<% @posts.each do |post| %>
+<li class="post"><%= post.name %></li>
+<% end %>
 </ul>

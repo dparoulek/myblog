@@ -1,3 +1,170 @@
-.notice {
-    color: green;
+/*  http://colorschemedesigner.com/#0C51T1BsO6q6q */
+
+.primary-1 {
+    background-color:#8F8E88;
+}
+.primary-2 {
+    background-color:#6B6A67;
+}
+.primary-3 {
+    background-color:#5D542C;
+}
+.primary-4 {
+    background-color:#C7C6BF;
+}
+.primary-5 {
+    background-color:#C7C6C1;
+}
+.secondary-a-1 {
+    background-color:#6E746E;
+}
+.secondary-a-2 {
+    background-color:#545753;
+}
+.secondary-a-3 {
+    background-color:#264B24;
+}
+.secondary-a-4 {
+    background-color:#B3B9B2;
+}
+.secondary-a-5 {
+    background-color:#B4B9B4;
+}
+.secondary-b-1 {
+    background-color:#8E8687;
+}
+.secondary-b-2 {
+    background-color:#6A6666;
+}
+.secondary-b-3 {
+    background-color:#5C2C2D;
+}
+.secondary-b-4 {
+    background-color:#C6BFBF;
+}
+.secondary-b-5 {
+    background-color:#C6C1C1;
+}
+.complement-1 {
+    background-color:#5F5E62;
+}
+.complement-2 {
+    background-color:#48474A;
+}
+.complement-3 {
+    background-color:#261F40;
+}
+.complement-4 {
+    background-color:#ACABB1;
+}
+.complement-5 {
+    background-color:#ADACB1;
+}
+
+/* HTML Tag Styles */
+body {
+    background-color: #FFFFFF;
+    color: #666;
+    font-family:Verdana,sans-serif;
+    font-size:12px;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+
+h1 {
+    margin: 0.5em 0;
+    font-size: 200%;
+}
+
+p {
+    color:#666;
+    font-family:georgia,times,"times new roman";
+    font-size:16px;
+    line-height:1.3em;
+    margin:0 0 15px;
+}
+
+a:link {
+    color:#8E8687;
+    margin:0;
+    padding:0;
+}
+
+a img {
+    border:0 none;
+    padding:0;
+}
+
+a:visited {
+    color:#6A6666;
+}
+
+a:hover {
+    color:#261F40;
+}
+
+ul
+{
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+
+/****** Custom ******/
+
+.center {
+    text-align:left;
+    width:500px;
+    margin:0px auto;
+}
+
+.navigation {
+    margin-bottom: 20px;
+}
+
+#header {
+    border-bottom: 6px solid #264B24;
+    background-color: #C7C6C1;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+.logo {
+    color: #333333;
+    font-size: 27px;
+    font-weight: bold;
+    font-family: 'Lucida Console', Monaco, monospace;
+}
+
+/* Files and Folder Lists*/
+
+li.directory {
+    padding-left: 20px;
+    background-image: url(/images/folder.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+li.file {
+    padding-left: 20px;
+    background-image: url(/images/page_white_text.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+/* Notice */
+#notice {
+    background-color: #264B24;
+    color: #fff;
+}
+
+#notice img {
+    display: block;
+    float: left;
+    padding: 5px;
+}
+#notice div {
+    padding: 5px;
 }

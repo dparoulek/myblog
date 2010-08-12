@@ -1,6 +1,9 @@
 <p><%= @git_repo_name %></p>
 <ul>
-<% @cwd.contents.each do |entry| %>
-<li><a href="<%= "/#{@git_repo_name}/#{@path=="/" ? "" : @path+"/"}#{entry.name}" %>" ><%= entry.name %></a></li>
+<% @dirs.each do |entry| %>
+<li class="directory"><a href="<%= "/#{@git_repo_name}/#{@path=="/" ? "" : @path+"/"}#{entry.name}" %>" ><%= entry.name %></a></li>
+<% end %>
+<% @files.each do |entry| %>
+<li class="file"><a href="<%= "/#{@git_repo_name}/#{@path=="/" ? "" : @path+"/"}#{entry.name}" %>" ><%= entry.name %></a></li>
 <% end %>
 </ul>

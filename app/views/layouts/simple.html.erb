@@ -3,17 +3,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <title>SiteName</title>
+    <title>Upgrading Dave</title>
     <%=stylesheet_link_tag 'simple'%>
   </head>
   <body>
-    <div class="header">
-      <!--       <div class="logo">SiteName</div> -->
+    <div id="header">
+      <div class="logo center">Upgrading Dave</div>
+    </div>
+    <div id="content" class="center">
       <div class="navigation">
+	<%= link_to "home", :controller => "home", :action =>"index" %> |
 	<% if logged_in? %>
-	<a href="/git_repos">communities</a> |
-	<% end %>
-	<% if logged_in? %>
+	<a href="/git_repos">Files</a> |
 	<%= link_to "logout", :controller => "login", :action =>"logout" %> 
 	<% end %>
 	<% if !logged_in? %>
@@ -21,11 +22,9 @@
 	<%= link_to "signup", :controller => "people", :action =>"new" %>
 	<% end %>
       </div>
-    </div>
-<% if flash[:notice] %>
-<div class="notice"><%= flash[:notice] %></div>
-<% end %>
-    <div id="content">
+      <% if flash[:notice] %>
+      <div id="notice"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

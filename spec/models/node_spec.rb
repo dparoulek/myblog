@@ -5,18 +5,21 @@ describe Node do
     @mkdwn_attributes = {
       :name => "example mkdwn node",
       :git_repo_id => 1,
-      :git_repo_path => "/path/to/mkdwn/file"
+      :git_repo_path => "/path/to/mkdwn/file",
+      :publish_date => Time.now
     }
 
-    @mkdwn_attributes = {
+    @org_attributes = {
       :name => "example org node",
       :git_repo_id => 1,
-      :git_repo_path => "/path/to/org/file"
+      :git_repo_path => "/path/to/org/file",
+      :publish_date => Time.now
     }
+
   end
 
   it "should create a new instance given valid attributes" do
-    Node.create!(@valid_attributes)
+    Node.create!(@mkdwn_attributes)
   end
 
   it "should convert markdown to html" do 
@@ -36,10 +39,7 @@ describe Node do
     org_node = Node.create!(@org_attributes)
     org_node.to_html.should include "<h1 class=\"title\">Todo Item 1</h1>"
   end
-
 end
-
-
 
 # == Schema Information
 #
@@ -51,5 +51,10 @@ end
 #  updated_at    :datetime
 #  git_repo_id   :string(255)
 #  git_repo_path :string(255)
+#  mode          :string(255)
+#  user_id       :integer
+#  group_id      :integer
+#  public        :boolean
+#  publish_date  :datetime
 #
 

@@ -33,3 +33,10 @@ Feature: Browse Git Repository
     When I visit "/no-where"
     Then I should see "Can't find git repository" 
     
+  Scenario: Publish files inside git repositories to be available on the site
+    Given I have set up a git repository inside "../tmp-git-repo"
+    And that I have registered an account using "dparoulek@gmail" as username and "test" as password
+    And that I am logged in
+    When I visit "/notes/personal/cooking/grill.mkdwn"
+    And I press "Create and Publish"
+    Then I should see "Node was successfully created"

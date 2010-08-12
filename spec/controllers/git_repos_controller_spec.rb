@@ -140,21 +140,21 @@ describe GitReposController do
     it "should list folders and files from root of git repository" do
       GitRepo.stub(:find).and_return(@repo)
       post :list, :id => 1
-      assigns[:cwd].contents.collect { |entry| entry.name }.should include("todo.org")
+      assigns[:files].collect { |entry| entry.name }.should include("todo.org")
     end
 
     it "should list folders and files from root of git repository by name" do
       params_from(:get, "/notes").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => []}
       GitRepo.stub(:find_by_name).and_return(@repo)
       post :list, :name => "notes", :path => []
-      assigns[:cwd].contents.length.should >= 0
+      assigns[:dirs].length.should >= 0
     end
 
     it "should map urls to git paths" do
       params_from(:get, "/notes/personal/cooking").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["personal", "cooking"]}
       GitRepo.stub(:find_by_name).and_return(@repo)
       post :list, :name => "notes", :path => ["personal"]
-      assigns[:cwd].contents.length.should >= 0
+      assigns[:files].length.should >= 0
     end
 
     it "should redirect to not_found with error message when user attempts to navigate to invalid path" do

@@ -1,9 +1,14 @@
-Given /^that I have granted anonymous access to an article$/ do
-  @node = Node.create(:name => "cooking.mkdwn", :git_repo_id => 1, :git_repo_path => "/path/to/file")
-  @node.stub(:to_html).and_return("Some really good recipes")
-  @node.chmod(777)
+When /^I create a node named "([^"]*)" based on "([^"]*)"$/ do |node_name, git_file_path|
+  Node.create!(:name => node_name, :git_repo_path => git_file_path, :git_repo_id => @test_repo.id)
 end
 
-Then /^I should see the article$/ do
+When /^I grant anonymous access to the node named "([^"]*)"$/ do |node_name|
+  test_node = Node.find_by_name(node_name)
+  test_node.public.should_not be true
+  test_node.public = true
+  test_node.save!
+end
+
+When /^I logout$/ do
   pending # express the regexp above with the code you wish you had
 end

@@ -12,9 +12,10 @@ Feature: Authorization
     And that I am logged in
     When I create a node named "Recipes" based on "/notes/personal/cooking/grill.mkdwn"
     And I grant anonymous access to the node named "Recipes"
-    And I logout
     And I go to the home page
-    Then I should see the article
+    And I follow "Logout"
+    And I follow "home"
+    Then I should see "Recipes"
 
 
 

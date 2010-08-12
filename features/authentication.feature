@@ -7,7 +7,7 @@ Feature: Authentication
   Scenario: Able to login
     Given that I am not logged in
     When I go to the home page
-    Then I should see "Login" 
+    Then I should see "login" 
 
   Scenario: Login via html form
     Given I am on the login page
@@ -16,7 +16,7 @@ Feature: Authentication
     And I fill in "test" for "password"
     And I press "Login"
     Then I should see "Logged In Successfully!"
-    And I should see "Logout"
+    And I should see "logout"
 
   Scenario: Logout
     Given that I have registered an account using "dparoulek@gmail" as username and "test" as password	

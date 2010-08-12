@@ -1,5 +1,4 @@
 class Node < ActiveRecord::Base
-
   def to_html
     #TODO: This is really messy, I'll clean this up later
     # Find the file name and contents
@@ -22,6 +21,7 @@ class Node < ActiveRecord::Base
   
   # acl is a integer that represents world, group, owner
   # permissions. For example 755
+  # TODO: finish implementing
   def chmod(acl)
     if(acl == 777)
       mode = "777"
@@ -41,10 +41,7 @@ class Node < ActiveRecord::Base
   def extension(filename)
     File.extname(filename)
   end
-
 end
-
-
 
 # == Schema Information
 #
@@ -56,5 +53,10 @@ end
 #  updated_at    :datetime
 #  git_repo_id   :string(255)
 #  git_repo_path :string(255)
+#  mode          :string(255)
+#  user_id       :integer
+#  group_id      :integer
+#  public        :boolean
+#  publish_date  :datetime
 #
 

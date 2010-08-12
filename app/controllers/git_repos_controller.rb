@@ -1,6 +1,5 @@
 class GitReposController < ApplicationController
   def list
-    #     begin
     repo = nil
     if(params[:name])
       logger.debug("Attemping to find git repo by name '#{params[:name]}'")
@@ -26,26 +25,30 @@ class GitReposController < ApplicationController
     # parameter.
     abspath = params[:path] && !params[:path].empty? ? params[:path] * '/' : '/'
     if(repo.is_a_file?(abspath))
-      blob = repo.getFile(abspath)
-      contents = blob.data
-      name = blob.name
       path = abspath
+      contents = repo.getFileContents(path)
+      name = repo.getFileName(path)
       logger.debug("Displaying file named #{name} inside the #{path} directory inside the '#{repo.name}' git repo")
-      @node = Node.create(:name => name, :git_repo_id => repo.id, :git_repo_path => path)
+      @node = Node.find(:first, :conditions => {:git_repo_id => repo.id, :git_repo_path => path})
+      unless @node
+        @node = Node.new(:name => name, :git_repo_id => repo.id, :git_repo_path => path)
+      end
       render :action => "file"          
-    else 
+    else # This is a directory
       @git_repo_name = repo.name
-      @cwd = repo.getDirectory(abspath)
+      tree = repo.getDirectory(abspath)
+      @files = tree.blobs
+      @dirs = tree.trees
       @path = abspath
       logger.debug("Listing files inside the #{@path} directory inside the '#{repo.name}' git repo")
       render :action => "list"
     end
-    #     rescue ActiveRecord::RecordNotFound
-    #       logger.error("Unable to find repository given params: #{params}")
-    #       flash[:notice] = "Unable to find git repository?!"
-    #       flash[:error] = $!
-    #       redirect_to :action => 'not_found'
-    #     end
+  end
+
+  def publish
+    respond_to do |format|
+      format.js
+    end
   end
 
   def not_found

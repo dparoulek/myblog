@@ -1,1 +1,23 @@
 <%= render(:partial => "nodes/node", :object => @node) %>
+<% if @node.id %>
+<p>TODO: implement un-publish</p>
+<% else %>
+<% form_for(@node) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :git_repo_path %><br />
+    <%= f.text_field :git_repo_path %>
+  </p>
+  <p>
+    <%= f.label :git_repo_id %><br />
+    <%= f.text_field :git_repo_id %>
+  </p>
+  <p>
+    <%= f.submit 'Create and Publish' %>
+  </p>
+<% end %>
+<% end %>
