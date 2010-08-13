@@ -63,13 +63,13 @@
 
 /* HTML Tag Styles */
 body {
-    background-color: #FFFFFF;
+    background-color: #6B6A67;
     color: #666;
     font-family:Verdana,sans-serif;
     font-size:12px;
-    margin:0;
     padding:0;
-    text-align:center;
+    margin: 0 auto;
+    width: 56em;
 }
 
 h1 {
@@ -114,10 +114,18 @@ ul
 
 /****** Custom ******/
 
+#main {
+    width: 750px;
+}
+
 .center {
     text-align:left;
     width:500px;
     margin:0px auto;
+}
+
+.left-margin {
+    padding-left: 20px;
 }
 
 .navigation {
@@ -127,15 +135,19 @@ ul
 #header {
     border-bottom: 6px solid #264B24;
     background-color: #C7C6C1;
-    padding-top: 10px;
-    padding-left: 5px;
+}
+
+#content {
+    background-color: white;
+    padding: 20px;
 }
 
 .logo {
     color: #333333;
-    font-size: 27px;
+    font-size: 18px;
     font-weight: bold;
     font-family: 'Lucida Console', Monaco, monospace;
+    letter-spacing:15px;
 }
 
 /* Files and Folder Lists*/

@@ -7,25 +7,27 @@
     <%=stylesheet_link_tag 'simple'%>
   </head>
   <body>
-    <div id="header">
-      <div class="logo center">Upgrading Dave</div>
-    </div>
-    <div id="content" class="center">
-      <div class="navigation">
+    <div id="main">
+      <div id="header" class="left-margin">
+	<div class="logo">Upgrading Dave</div>
+     </div>
+     <div id="content" class="left-margin">
+       <div class="navigation">
 	<%= link_to "home", :controller => "home", :action =>"index" %> |
 	<% if logged_in? %>
-	<a href="/git_repos">Files</a> |
+	<a href="/git_repos">files</a> |
 	<%= link_to "logout", :controller => "login", :action =>"logout" %> 
 	<% end %>
 	<% if !logged_in? %>
 	<%= link_to "login", :controller => "login", :action =>"login" %> |
 	<%= link_to "signup", :controller => "people", :action =>"new" %>
 	<% end %>
-      </div>
-      <% if flash[:notice] %>
-      <div id="notice"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
-      <% end %>
-      <%= yield %>
-    </div>
-  </body>
+       </div>
+        <% if flash[:notice] %>
+	<div id="notice"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
+        <% end %>
+        <%= yield %>
+     </div>
+   </div>
+ </body>
 </html>

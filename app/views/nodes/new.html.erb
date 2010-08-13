@@ -1,0 +1,27 @@
+<h1>New node</h1>
+
+<% form_for(@node) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :git_repo_id %><br />
+    <%= f.text_field :git_repo_id %>
+  </p>
+  <p>
+    <%= f.label :git_repo_path %><br />
+    <%= f.text_field :git_repo_path %>
+  </p>
+  <p>
+    <%= f.label :published_on %><br />
+    <%= f.datetime_select :publish_date %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', nodes_path %>
