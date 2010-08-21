@@ -3,6 +3,8 @@ class HomeController < ApplicationController
 
   def index
     # Get a list of nodes that are public to display on home page
-    @posts = Node.find(:all, :conditions => { :public => true })
+    params[:page] = params[:page] || '1'
+    @nodes = Node.most_recent(params[:page])
+    @total = Node.total_published
   end
 end

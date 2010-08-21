@@ -1,6 +1,6 @@
 <%= render(:partial => "nodes/node", :object => @node) %>
 <% if @node.id %>
-<p>TODO: implement un-publish</p>
+<td><%= link_to 'Unpublish', @node, :confirm => 'This will also delete any comments lose any associations to attachments. Are you sure?', :method => :delete %></td>
 <% else %>
 <% form_for(@node) do |f| %>
   <%= f.error_messages %>

@@ -12,7 +12,15 @@ describe LoginController do
     controller.current_user.email.should == "test@email.com"
     controller.logged_in?.should be true
   end
-  
+
+  describe "GET register" do
+    it "sets redirect in session" do 
+      controller.logged_in?.should be false
+      get :register
+      session[:redirect_to].should == "/login"      
+    end
+  end
+
   it "should not be able to login via get"
 
 end

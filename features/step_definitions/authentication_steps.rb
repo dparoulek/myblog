@@ -1,6 +1,3 @@
-# require 'guarddog/authentication'
-# include GuardDog::Authentication
-
 Given /^that I have registered an account using "([^"]*)" as username and "([^"]*)" as password$/ do |username, password|
   Person.create!(:email => username, :password => password)
   @username = username

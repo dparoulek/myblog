@@ -1,0 +1,21 @@
+<h3>Please leave a comment!</h3>
+
+<% form_for(@comment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <%= f.hidden_field :parent_id %>
+  <%= f.hidden_field :node_id %>
+  <input type="hidden" value="<%= @redirect_back %>" id="redirect_back" name="redirect_back" />
+  <p>
+    <%= f.submit 'submit' %>
+  </p>
+
+<% end %>

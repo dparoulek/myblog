@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  skip_before_filter :auth_required, :only => [:create, :new]
+
   # GET /people
   # GET /people.xml
   def index
@@ -41,14 +43,28 @@ class PeopleController < ApplicationController
   # POST /people.xml
   def create
     @person = Person.new(params[:person])
+    logger.error("REDIRECT: #{session[:redirect_to]}")
+    redirect = session[:redirect_to]
 
     respond_to do |format|
       if @person.save
         flash[:notice] = 'Person was successfully created.'
-        format.html { redirect_to(@person) }
+        format.html { 
+          if(redirect)
+             redirect_to(redirect)
+          else
+            redirect_to(@person) 
+          end
+        }
         format.xml  { render :xml => @person, :status => :created, :location => @person }
       else
-        format.html { render :action => "new" }
+        format.html { 
+            if(redirect)
+              redirect_to(redirect)
+            else
+              render :action => "new" 
+            end
+          }
         format.xml  { render :xml => @person.errors, :status => :unprocessable_entity }
       end
     end

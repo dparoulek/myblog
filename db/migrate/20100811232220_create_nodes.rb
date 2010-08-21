@@ -4,7 +4,8 @@ class CreateNodes < ActiveRecord::Migration
       t.string :name
       t.string :git_repo_id
       t.string :git_repo_path
-      t.datetime :published_on
+      t.boolean :public
+      t.datetime :publish_date
 
       t.timestamps
     end

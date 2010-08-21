@@ -1,4 +1,6 @@
 class NodesController < ApplicationController
+  skip_before_filter :auth_required, :only => "show"
+
   # GET /nodes
   # GET /nodes.xml
   def index
@@ -14,6 +16,9 @@ class NodesController < ApplicationController
   # GET /nodes/1.xml
   def show
     @node = Node.find(params[:id])
+    @comment = Comment.new(:node_id => @node.id)
+    @comment.node_id = @node.id
+    @redirect_back = true
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,6 +46,7 @@ class NodesController < ApplicationController
   # POST /nodes.xml
   def create
     @node = Node.new(params[:node])
+    @node.public = true
 
     respond_to do |format|
       if @node.save

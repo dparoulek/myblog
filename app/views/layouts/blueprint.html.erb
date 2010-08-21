@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Upgrading Dave</title>
+    <%=stylesheet_link_tag 'blueprint/screen.css', :media => "screen, projection" %>
+    <%=stylesheet_link_tag 'blueprint/print.css', :media => "print" %>
+    <!--[if lt IE 8]>
+	<%=stylesheet_link_tag 'blueprint/ie.css', :media => "screen, projection" %>
+	<![endif]-->
+    <%=stylesheet_link_tag 'blueprint-custom.css', :media => "screen, projection" %>
+  </head>
+  <body class="container">
+    <div id="left-col" class="span-6">
+      <h1>Upgrading Dave</h1>
+      <ul id="main-nav">
+	<li><%= link_to "home", :controller => "home", :action =>"index" %>
+	<% if logged_in? %>
+	<li><a href="/git_repos">files</a>
+	<li><%= link_to "logout", :controller => "login", :action =>"logout" %> 
+	<% end %>
+	<% if !logged_in? %>
+	<li><%= link_to "login", :controller => "login", :action =>"login" %>
+	<li><%= link_to "signup", :controller => "login", :action =>"register" %>
+	<% end %>
+	<li><a href="#">previous post</a>
+	<li><a href="#">next post</a>
+	<li><a href="#">all posts</a>
+      </ul>
+    </div>
+    <div id="content" class="span-17 last">
+      <% if flash[:notice] %>
+      <div id="notice" class="img-text"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
+      <% end %>
+        <%= yield %>
+    </div>
+  </body>
+</html>

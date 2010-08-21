@@ -9,15 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100811230858) do
+ActiveRecord::Schema.define(:version => 20100818131415) do
 
-  create_table "content_items", :force => true do |t|
-    t.string   "name"
-    t.string   "git_repo_id"
-    t.string   "git_repo_path"
-    t.datetime "published_on"
+  create_table "comments", :force => true do |t|
+    t.string   "username"
+    t.text     "comment"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "node_id"
   end
 
   create_table "git_repos", :force => true do |t|
@@ -29,15 +29,12 @@ ActiveRecord::Schema.define(:version => 20100811230858) do
 
   create_table "nodes", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "git_repo_id"
     t.string   "git_repo_path"
-    t.string   "mode"
-    t.integer  "user_id"
-    t.integer  "group_id"
     t.boolean  "public"
     t.datetime "publish_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", :force => true do |t|

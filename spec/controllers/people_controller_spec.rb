@@ -56,6 +56,13 @@ describe PeopleController do
         post :create, :person => {}
         response.should redirect_to(person_url(mock_person))
       end
+
+      it "redirects to login page" do
+        Person.stub(:new).and_return(mock_person(:save => true))
+        session[:redirect_to] = "/login/register"
+        post :create, :person => {}
+        response.should redirect_to("/login/register")
+      end
     end
 
     describe "with invalid params" do

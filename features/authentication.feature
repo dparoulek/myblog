@@ -38,7 +38,12 @@ Feature: Authentication
 
   Scenario: Login via openid
 
-  Scenario: Create user
+  Scenario: Register
+    Given that I am not logged in
+    When I am on the login page
+    And I follow "signup"
+    Then I should not see "Please log in to see this page"
+    And I should see "Sign up for an account"
 
   Scenario: Restrict access to pages
 

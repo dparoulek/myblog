@@ -1,23 +1,10 @@
-<p>
-  <b>Name:</b>
-  <%=h @node.name %>
-</p>
-
-<p>
-  <b>Git repo:</b>
-  <%=h @node.git_repo_id %>
-</p>
-
-<p>
-  <b>Git repo path:</b>
-  <%=h @node.git_repo_path %>
-</p>
-
-<p>
-  <b>Published on:</b>
-  <%=h @node.publish_date %>
-</p>
-
+<%= render(:partial => "nodes/node", :object => @node) %>
+<% @node.comments.each do |comment| %>
+<%= comment.comment %>
+<% end %>
+<% if @comment %>
+<%= render(:partial => "comments/new_comment", :object => @comment) %>
+<% end %>
 
 <%= link_to 'Edit', edit_node_path(@node) %> |
 <%= link_to 'Back', nodes_path %>

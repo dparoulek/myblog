@@ -27,4 +27,10 @@ class LoginController < ApplicationController
     render :template => "login/index"
   end
 
+  # GET /register
+  def register
+    @person = Person.new
+    session[:redirect_to] = "/login"
+  end
+
 end

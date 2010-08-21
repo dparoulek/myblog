@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
   map.resources :nodes
 
   map.resources :git_repos
@@ -8,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'login', :controller => 'login', :action => 'index', :conditions => { :method => :get }
   map.connect 'login', :controller => 'login', :action => 'login', :conditions => { :method => :post }
   map.connect 'logout', :controller => 'login', :action => 'logout'
+  map.connect 'register', :controller => 'login', :action => 'register', :conditions => { :method => :get }
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'

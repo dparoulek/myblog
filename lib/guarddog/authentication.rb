@@ -30,7 +30,13 @@ module GuardDog
       end
 
       def current_user
-        @current_user ||= session[:person] ? Person.find(session[:person]) : nil
+        begin 
+          @current_user ||= session[:person] ? Person.find(session[:person]) : nil
+        rescue
+          # This happens when the session contains an ID of a person that no longer exists in the database
+          @current_user = nil
+        end
+         
       end
 
       def authorized?

@@ -1,4 +1,29 @@
 class Node < ActiveRecord::Base
+  # used to paginate nodes in views
+  cattr_accessor :per_page
+  @@per_page = 5
+
+  # nodes have comments
+  has_many :comments
+  
+  before_save :default_values
+  
+  def default_values
+    self.publish_date = DateTime.now unless self.publish_date
+  end
+
+  def self.most_recent(page=1)
+    page_num=page.to_i-1
+    @nodes = find(:all, :order => "publish_date DESC", 
+                        :limit => @@per_page,
+                        :offset => page_num*@@per_page,
+                        :conditions => { :public => true })
+  end
+
+  def self.total_published
+    @total_published = find(:all, :conditions => { :public => true }).count
+  end
+
   def to_html
     #TODO: This is really messy, I'll clean this up later
     # Find the file name and contents
@@ -43,20 +68,18 @@ class Node < ActiveRecord::Base
   end
 end
 
+
 # == Schema Information
 #
 # Table name: nodes
 #
 #  id            :integer         not null, primary key
 #  name          :string(255)
-#  created_at    :datetime
-#  updated_at    :datetime
 #  git_repo_id   :string(255)
 #  git_repo_path :string(255)
-#  mode          :string(255)
-#  user_id       :integer
-#  group_id      :integer
 #  public        :boolean
 #  publish_date  :datetime
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 

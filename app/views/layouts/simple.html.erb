@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>Upgrading Dave</title>
-    <%=stylesheet_link_tag 'simple'%>
+    <%=stylesheet_link_tag 'simple' %>
   </head>
   <body>
     <div id="main">
@@ -20,11 +20,11 @@
 	<% end %>
 	<% if !logged_in? %>
 	<%= link_to "login", :controller => "login", :action =>"login" %> |
-	<%= link_to "signup", :controller => "people", :action =>"new" %>
+	<%= link_to "signup", :controller => "login", :action =>"register" %>
 	<% end %>
        </div>
         <% if flash[:notice] %>
-	<div id="notice"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
+	<div id="notice" class="img-text"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
         <% end %>
         <%= yield %>
      </div>

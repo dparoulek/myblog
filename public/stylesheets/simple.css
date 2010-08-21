@@ -1,71 +1,33 @@
 /*  http://colorschemedesigner.com/#0C51T1BsO6q6q */
+.primary-1 { background-color: #E6E0DA }
+.primary-2 { background-color: #DAD5D0 }
+.primary-3 { background-color: #D5C7B7 }
+.primary-4 { background-color: #E8E3DD }
+.primary-5 { background-color: #E8E3DE }
 
-.primary-1 {
-    background-color:#8F8E88;
-}
-.primary-2 {
-    background-color:#6B6A67;
-}
-.primary-3 {
-    background-color:#5D542C;
-}
-.primary-4 {
-    background-color:#C7C6BF;
-}
-.primary-5 {
-    background-color:#C7C6C1;
-}
-.secondary-a-1 {
-    background-color:#6E746E;
-}
-.secondary-a-2 {
-    background-color:#545753;
-}
-.secondary-a-3 {
-    background-color:#264B24;
-}
-.secondary-a-4 {
-    background-color:#B3B9B2;
-}
-.secondary-a-5 {
-    background-color:#B4B9B4;
-}
-.secondary-b-1 {
-    background-color:#8E8687;
-}
-.secondary-b-2 {
-    background-color:#6A6666;
-}
-.secondary-b-3 {
-    background-color:#5C2C2D;
-}
-.secondary-b-4 {
-    background-color:#C6BFBF;
-}
-.secondary-b-5 {
-    background-color:#C6C1C1;
-}
-.complement-1 {
-    background-color:#5F5E62;
-}
-.complement-2 {
-    background-color:#48474A;
-}
-.complement-3 {
-    background-color:#261F40;
-}
-.complement-4 {
-    background-color:#ACABB1;
-}
-.complement-5 {
-    background-color:#ADACB1;
-}
+.secondary-a-1 { background-color: #E6E2DA }
+.secondary-a-2 { background-color: #DAD7D0 }
+.secondary-a-3 { background-color: #D5CDB7 }
+.secondary-a-4 { background-color: #E8E5DD }
+.secondary-a-5 { background-color: #E8E5DE }
+
+.secondary-b-1 { background-color: #E6DCDA }
+.secondary-b-2 { background-color: #DAD2D0 }
+.secondary-b-3 { background-color: #D5BCB7 }
+.secondary-b-4 { background-color: #E8DFDD }
+.secondary-b-5 { background-color: #E8E0DE }
+
+.complement-1 { background-color: #8A8F91 }
+.complement-2 { background-color: #838889 }
+.complement-3 { background-color: #738187 }
+.complement-4 { background-color: #959A9C }
+.complement-5 { background-color: #959A9C }
 
 /* HTML Tag Styles */
 body {
-    background-color: #6B6A67;
-    color: #666;
-    font-family:Verdana,sans-serif;
+    background-color: #959A9C;
+    color: #000;
+    font-family:verdana,sans-serif;
     font-size:12px;
     padding:0;
     margin: 0 auto;
@@ -78,15 +40,15 @@ h1 {
 }
 
 p {
-    color:#666;
-    font-family:georgia,times,"times new roman";
-    font-size:16px;
-    line-height:1.3em;
-    margin:0 0 15px;
+    color:#222222;
+    font-size:13px;
+    line-height:18px;
+    margin:0 0 13px;
+    padding: 0px;
 }
 
 a:link {
-    color:#8E8687;
+    color:#DAD7D0;
     margin:0;
     padding:0;
 }
@@ -97,11 +59,11 @@ a img {
 }
 
 a:visited {
-    color:#6A6666;
+    color:#DAD7D0;
 }
 
 a:hover {
-    color:#261F40;
+    color:#838889;
 }
 
 ul
@@ -133,13 +95,12 @@ ul
 }
 
 #header {
-    border-bottom: 6px solid #264B24;
-    background-color: #C7C6C1;
+    border-bottom: 6px solid #DAD7D0;
+    background-color: #EAE3DD;
 }
 
 #content {
     background-color: white;
-    padding: 20px;
 }
 
 .logo {
@@ -172,11 +133,59 @@ li.file {
     color: #fff;
 }
 
-#notice img {
+/* Anywhere you need image followed by text */
+.img-text img {
     display: block;
     float: left;
     padding: 5px;
 }
-#notice div {
+.img-text div {
     padding: 5px;
+}
+
+.node-name {
+    font-size: 18px;
+    font-weight: bold;   
+    color: #738187;
+}
+
+.node-publish_date {
+    font-size: 10px;
+    color: #959A9C;
+}
+.node-header {
+    margin-bottom: 10px
+}
+
+/* Pager, Page Numbers, Paging */
+
+#pager_wrap {
+    height: 35px;
+}
+
+.page-size  {
+    float:right;
+}
+
+.pager {
+    float: left;
+}
+
+.page-numbers  {
+    border:1px solid #CCCCCC;
+    color:#808185;
+/*     display:block; */
+/*     float:left; */
+    font-family:Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 11px;
+/*     margin-right:3px; */
+    padding:4px 4px 3px;
+    text-decoration:none;
+}
+
+.page-numbers.current {
+    background-color:#808185;
+    border:1px solid #808185;
+    color:#FFFFFF;
+    font-weight:bold;
 }

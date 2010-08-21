@@ -1,2 +1,52 @@
+Using the acts_as_tree plugin should make this fairly easy to implement. Install it using
+
+ruby script/plugin install acts_as_tree
+
+app/models/comment.rb
+
+class Comment < ActiveRecord::Base
+  acts_as_tree :order => 'created_at'
+end
+db/migrate/20090121025349_create_comments.rb
+
+class CreateComments < ActiveRecord::Migration
+  def self.up
+    create_table :comments do |t|
+      t.references :parent
+      t.string :title
+      t.text :content
+      ...
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :comments
+  end
+end
+app/views/comments/_comment.html.erb
+
+<div id="comment_<%= comment.id %>">
+  <h1><%= comment.title %>
+  <%= comment.content %>
+  <%= render :partial => 'comments/comment', :collection => comments.children %>
+</div>
+app/views/comments/show.html.erb
+
+<div id="comments">
+  <%= render :partial => 'comments/comment', :object => Comment.find(params[:id]) %>
+</div>
+The magic happens in show.html.erb when it calls <%= render :partial => 'comments/comment', :object => Comment.find(params[:id]) %>, this will cause the partial to recursively render all children comments. If you want a limit to the depth, you can do it in the partial or in the model.
+
+Edit:
+This will leave you with all the comments with the same spacing in the HTML for every depth. If you want to produce easy to read HTML, just use render(...).gsub(/^/, "\t") this will work recursively as well producing nicely indented HTML.
+
+I combined it into my own method in app/helpers/application_helper.rb
+
+def indented_render(num, *args)
+  render(*args).gsub(/^/, "\t" * num)
+end
+So now you can call <%= indented_render 1, :partial => 'comments/comment', ... %>
+
 	  <% title = 'UPGRADING'
          title.chars.each_with_index {|letter, idx| %><span style="font-size:<%= 2.5*idx+10 %>px;"><%=letter%></span><% } %>

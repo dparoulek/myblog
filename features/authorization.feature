@@ -10,13 +10,8 @@ Feature: Authorization
     Given I have set up a git repository inside "../tmp-git-repo"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     And that I am logged in
-    When I create a node named "Recipes" based on "/notes/personal/cooking/grill.mkdwn"
-    And I grant anonymous access to the node named "Recipes"
+    When I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
     And I go to the home page
     And I follow "Logout"
     And I follow "home"
     Then I should see "Recipes"
-
-
-
-  

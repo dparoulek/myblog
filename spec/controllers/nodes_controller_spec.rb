@@ -47,12 +47,14 @@ describe NodesController do
     describe "with valid params" do
       it "assigns a newly created node as @node" do
         Node.stub(:new).with({'these' => 'params'}).and_return(mock_node(:save => true))
+        mock_node.should_receive(:public=).with(true)
         post :create, :node => {:these => 'params'}
         assigns[:node].should equal(mock_node)
       end
 
       it "redirects to the created node" do
         Node.stub(:new).and_return(mock_node(:save => true))
+        mock_node.should_receive(:public=).with(true)
         post :create, :node => {}
         response.should redirect_to(node_url(mock_node))
       end
@@ -61,12 +63,14 @@ describe NodesController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved node as @node" do
         Node.stub(:new).with({'these' => 'params'}).and_return(mock_node(:save => false))
+        mock_node.should_receive(:public=).with(true)
         post :create, :node => {:these => 'params'}
         assigns[:node].should equal(mock_node)
       end
 
       it "re-renders the 'new' template" do
         Node.stub(:new).and_return(mock_node(:save => false))
+        mock_node.should_receive(:public=).with(true)
         post :create, :node => {}
         response.should render_template('new')
       end

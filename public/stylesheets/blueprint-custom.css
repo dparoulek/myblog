@@ -1,0 +1,19 @@
+.icon {
+  padding-left: 22px;
+  background-repeat: no-repeat;
+  background-position: 0 0; }
+
+.icon-date {
+  background-image: url(/images/date.png); }
+
+.icon-user {
+  background-image: url(/images/user.png); }
+
+li.directory {
+  background-image: url(/images/folder.png); }
+
+li.file {
+  padding-left: 20px;
+  background-image: url(/images/page_white_text.png);
+  background-repeat: no-repeat;
+  background-position: 0 0; }
