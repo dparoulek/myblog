@@ -43,7 +43,6 @@ class PeopleController < ApplicationController
   # POST /people.xml
   def create
     @person = Person.new(params[:person])
-    logger.error("REDIRECT: #{session[:redirect_to]}")
     redirect = session[:redirect_to]
 
     respond_to do |format|
@@ -59,11 +58,7 @@ class PeopleController < ApplicationController
         format.xml  { render :xml => @person, :status => :created, :location => @person }
       else
         format.html { 
-            if(redirect)
-              redirect_to(redirect)
-            else
               render :action => "new" 
-            end
           }
         format.xml  { render :xml => @person.errors, :status => :unprocessable_entity }
       end

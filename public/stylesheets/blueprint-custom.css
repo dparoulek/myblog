@@ -17,3 +17,9 @@ li.file {
   background-image: url(/images/page_white_text.png);
   background-repeat: no-repeat;
   background-position: 0 0; }
+
+ul#main-nav {
+  padding: 0;
+  margin: 0; }
+  ul#main-nav li {
+    list-style: none; }

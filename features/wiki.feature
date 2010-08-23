@@ -6,15 +6,15 @@ Feature: Wiki
   Background:
     Given I have set up a git repository inside "../tmp-git-repo"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
-    And that I am logged in
+    And that I login as "dparoulek@gmail" using password "test"
   
   Scenario: Display markdown files
     When I visit "/notes/personal/cooking/grill.mkdwn" 
-    Then I should see "Chicken" within "h1"
+    Then I should see "Chicken"
 
   Scenario: Display org files
     When I visit "/notes/todo.org"
-    Then I should see "Pick up milk, bread at grocery store" within "h1"
+    Then I should see "Pick up milk, bread at grocery store"
 
   Scenario: Display public entries on home page
     Given I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
@@ -26,7 +26,7 @@ Feature: Wiki
     Given I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
     And I set the published_on to "Jun 10 2010 5:30pm"
     When I follow "home"
-    Then I should see "published June 10, 2010"
+    Then I should see "posted on June 10, 2010"
 
   Scenario: Article Pagination
     Given I created nodes using

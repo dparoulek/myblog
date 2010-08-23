@@ -5,5 +5,5 @@ Feature: My Blog
 
   Scenario: Browse to Homepage
     When I go to the home page
-    Then I should see "login"
+    Then I should see "Login"
   

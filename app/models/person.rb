@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  validates_uniqueness_of :email
 
   # A valid Person object is returned if authenticated. Otherwise, return nil
   def self.authenticate_by_password(email, password)

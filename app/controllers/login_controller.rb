@@ -2,11 +2,10 @@ class LoginController < ApplicationController
   skip_before_filter :auth_required
 
   def index
-    flash.keep
   end
 
   def login
-    logger.debug("Recived login request for #{params[:email]}")
+    logger.debug("Received login request for #{params[:email]}")
     session[:return_to] = request.request_uri
     someone = Person.authenticate_by_password(params[:email], params[:password])
 
@@ -16,8 +15,6 @@ class LoginController < ApplicationController
       session[:person] = someone.id
       flash[:notice] = "Logged In Successfully!"
     end
-#    render :template => "login/index"
-#     redirect_to(session[:return_to] || "/")
     render :action => "index"
   end
 

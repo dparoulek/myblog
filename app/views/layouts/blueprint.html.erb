@@ -15,18 +15,18 @@
     <div id="left-col" class="span-6">
       <h1>Upgrading Dave</h1>
       <ul id="main-nav">
-	<li><%= link_to "home", :controller => "home", :action =>"index" %>
+	<li><%= link_to "Home", :controller => "home", :action =>"index" %>
 	<% if logged_in? %>
-	<li><a href="/git_repos">files</a>
-	<li><%= link_to "logout", :controller => "login", :action =>"logout" %> 
+	<li><a href="/git_repos">Files</a>
+	<li><%= link_to "Manage Peeps", :controller => "people" %> 
+	<li><%= link_to "Logout", :controller => "login", :action =>"logout" %> 
 	<% end %>
 	<% if !logged_in? %>
-	<li><%= link_to "login", :controller => "login", :action =>"login" %>
-	<li><%= link_to "signup", :controller => "login", :action =>"register" %>
+	<li><%= link_to "Login", :controller => "login", :action =>"login" %>
 	<% end %>
-	<li><a href="#">previous post</a>
-	<li><a href="#">next post</a>
-	<li><a href="#">all posts</a>
+	<li><a href="#">Previous Post</a>
+	<li><a href="#">Next Post</a>
+	<li><a href="#">All Posts</a>
       </ul>
     </div>
     <div id="content" class="span-17 last">

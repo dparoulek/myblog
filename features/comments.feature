@@ -6,7 +6,7 @@ Feature: Comments
   Background:
     Given I have set up a git repository inside "../tmp-git-repo"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
-    And that I am logged in
+    And that I login as "dparoulek@gmail" using password "test"
     When I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
     Then I follow "Logout"
 
