@@ -6,4 +6,8 @@ Feature: My Blog
   Scenario: Browse to Homepage
     When I go to the home page
     Then I should see "Login"
+
+  Scenario: link to Twitter Account
+ 
+  Scenario: RSS Feed
   
