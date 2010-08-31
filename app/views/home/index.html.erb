@@ -1,33 +1,5 @@
+<% if @node %>
 <div class="articles">
-  <% @nodes.each do |node| %>
-  <%= render(:partial => "nodes/node", :object => node) %>
-  <% end %>
-  <div class="pager">
-    <%
-      page_num = params[:page].to_i || 1
-      total_pages = @total / Node.per_page
-      if(@total - ( @total / Node.per_page ) * Node.per_page > 0)
-        total_pages += 1
-      end
-      
-      num_page_buttons = 4
-      num_page_diff = page_num.to_i - num_page_buttons
-      num_page_sum = page_num.to_i + num_page_buttons
-      start_page = num_page_diff > 0 ? num_page_diff : 1
-      end_page = num_page_sum < total_pages ? num_page_sum : total_pages
-    %>
-
-    <% if(num_page_diff - 1 > 0) %>
-    <a href="?page=1" class="page-numbers">1</a> ..         
-    <% end %>
-
-    <% (start_page..end_page).each do |i| %>
-    <a href="?page=<%= i %>" class="<% if page_num.eql?(i.to_s) %>current <% end %>page-numbers"><%= i %></a>
-    <% end %>
-
-    <% if(num_page_sum + 1 <= total_pages) %>
-    .. <a href="?page=<%=total_pages%>" class="page-numbers"><%=total_pages%></a>
-    <% end %>
-
-  </div>
-</ul>
+  <%= render(:partial => "nodes/node", :object => @node) %>
+</div>
+<% end %>

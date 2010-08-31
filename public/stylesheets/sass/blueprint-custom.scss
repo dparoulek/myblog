@@ -1,3 +1,78 @@
+/*
+  Blue lines: 
+  1px #87ceff every 27 px
+  Color scheme: 
+  http://colorschemedesigner.com/#3w21Hg3--w0w0
+
+  Inspired by: 
+  - http://gimp-tutorials.net/gimp-glow-effect
+  - http://www.smashingmagazine.com/2008/02/20/45-more-excellent-blog-designs/
+  - http://www.brandonmuth.com/
+  */
+
+body {
+    margin: 0px;
+    background: #13334a url('/images/background.png') top left no-repeat;
+    font: 13px/1.3 Verdana,"Lucida Grande",Arial,Helvetica,Sans-Serif;
+    color: #D8D8D8;
+}
+
+a:focus, a:hover {color:#A67029;}
+a {
+    color: #ffc77f;
+    text-decoration: none;
+}
+
+#squeeze {
+    margin: 240px 10px 20px 152px;
+    width: 646px;
+}
+
+#sidebar {
+    text-align: right;
+
+    a:focus, a:hover {color:#A67029;}
+    a {
+	color: #ffffff;
+	text-decoration: none;
+    }
+}
+
+h2.node-name {
+    a {
+	font-size: 24px;
+    }
+}
+
+div.date {
+    font-size: 24px;
+    float:left;
+}
+
+#content {
+    padding-right: 15px;
+    h1, h2, h3, h4, h5 {
+	font-size: 13px;
+	color: #ffc77f;
+
+	}
+}
+
+
+
+
+/* #logo { */
+/*     height: 67px; */
+/*     text-indent: -2000px */
+/* } */
+
+/* #footer { */
+/*      height: 1300px; */
+/*      background: url('/images/bottom.jpg') bottom center no-repeat; */
+/* } */
+
+
+
 .icon {
     padding-left: 22px;
     background-repeat: no-repeat;

@@ -21,6 +21,8 @@ describe NodesController do
   describe "GET show" do
     it "assigns the requested node as @node" do
       Node.stub(:find).with("37").and_return(mock_node)
+      mock_node.should_receive(:previous_node)
+      mock_node.should_receive(:next_node)
       get :show, :id => "37"
       assigns[:node].should equal(mock_node)
     end
@@ -133,6 +135,14 @@ describe NodesController do
       Node.stub(:find).and_return(mock_node(:destroy => true))
       delete :destroy, :id => "1"
       response.should redirect_to(nodes_url)
+    end
+  end
+
+  describe "Previous and Next" do 
+    it "should return correct next node" do
+      first = Node.create!(:name => "First", :public => true, :publish_date => DateTime.now)
+      second = Node.create!(:name => "Second", :public => true, :publish_date => DateTime.now)
+      first.publish_date < second.publish_date
     end
   end
 

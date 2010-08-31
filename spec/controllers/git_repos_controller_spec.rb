@@ -144,21 +144,21 @@ describe GitReposController do
     end
 
     it "should list folders and files from root of git repository by name" do
-      params_from(:get, "/notes").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => []}
+      params_from(:get, "/files/notes").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => []}
       GitRepo.stub(:find_by_name).and_return(@repo)
       post :list, :name => "notes", :path => []
       assigns[:dirs].length.should >= 0
     end
 
     it "should map urls to git paths" do
-      params_from(:get, "/notes/personal/cooking").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["personal", "cooking"]}
+      params_from(:get, "/files/notes/personal/cooking").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["personal", "cooking"]}
       GitRepo.stub(:find_by_name).and_return(@repo)
       post :list, :name => "notes", :path => ["personal"]
       assigns[:files].length.should >= 0
     end
 
     it "should redirect to not_found with error message when user attempts to navigate to invalid path" do
-      params_from(:get, "/no-where").should == {:controller => "git_repos", :action => "list", :name => "no-where", :path => []} 
+      params_from(:get, "/files/no-where").should == {:controller => "git_repos", :action => "list", :name => "no-where", :path => []} 
       post :list, :name => "no-where", :path => []
       response.should render_template('not_found')
     end

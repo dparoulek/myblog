@@ -7,7 +7,7 @@
 
 <% @git_repos.each do |git_repo| %>
   <tr>
-    <td><a href="/<%=h git_repo.name %>"><%= h git_repo.name %></a></td>
+    <td><a href="/files/<%=h git_repo.name %>"><%= h git_repo.name %></a></td>
     <td><%=h git_repo.path %></td>
     <td><%= link_to 'Show', git_repo %></td>
     <td><%= link_to 'Edit', edit_git_repo_path(git_repo) %></td>

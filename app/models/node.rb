@@ -12,7 +12,22 @@ class Node < ActiveRecord::Base
     self.publish_date = DateTime.now unless self.publish_date
   end
 
-  def self.most_recent(page=1)
+  def next_node()
+    @nodes = Node.find_by_sql(["select * from nodes where public = 'true' AND publish_date >= ? AND id > ? order by publish_date DESC, id DESC", self.publish_date, self.id])
+    @nodes[0]
+  end
+
+  def previous_node()
+    @nodes = Node.find_by_sql(["select * from nodes where public = 'true' AND publish_date <= ? AND id < ? order by publish_date DESC, id DESC", self.publish_date, self.id])
+    @nodes[0]
+  end
+
+  def self.most_recent_node()
+    @nodes = find(:first, :order => "publish_date DESC, id DESC", 
+                  :conditions => { :public => true })
+  end
+
+  def self.most_recent_nodes(page=1)
     page_num=page.to_i-1
     @nodes = find(:all, :order => "publish_date DESC", 
                         :limit => @@per_page,

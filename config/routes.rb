@@ -53,5 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id.:format'
 
   # Map all other requests to git controller to see if any connected git repositories contain the path
-  map.connect ':name/*path', :controller => 'git_repos', :action => 'list'
+  map.connect 'files/:name/*path', :controller => 'git_repos', :action => 'list'
+  map.connect 'files', :controller => 'git_repos'
+
 end

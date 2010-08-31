@@ -16,6 +16,10 @@ class NodesController < ApplicationController
   # GET /nodes/1.xml
   def show
     @node = Node.find(params[:id])
+    if(@node)
+      @previous_node = @node.previous_node
+      @next_node = @node.next_node
+    end
     @comment = Comment.new(:node_id => @node.id)
     @comment.node_id = @node.id
     @redirect_back = true

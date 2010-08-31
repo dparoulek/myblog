@@ -4,16 +4,16 @@ Feature: Wiki
   So that I can easily create new pages with notes
 
   Background:
-    Given I have set up a git repository inside "../tmp-git-repo"
+    Given I have set up a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     And that I login as "dparoulek@gmail" using password "test"
   
   Scenario: Display markdown files
-    When I visit "/notes/personal/cooking/grill.mkdwn" 
+    When I visit "/files/notes/personal/cooking/grill.mkdwn" 
     Then I should see "Chicken"
 
   Scenario: Display org files
-    When I visit "/notes/todo.org"
+    When I visit "/files/notes/todo.org"
     Then I should see "Pick up milk, bread at grocery store"
 
   Scenario: Display public entries on home page
@@ -30,19 +30,19 @@ Feature: Wiki
 
   Scenario: Article Pagination
     Given I created nodes using
-      | name   | git_repo_path                | git_repo_id | public |
-      | Node1  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node2  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node3  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node4  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node5  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node6  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node7  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node8  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node9  | personal/cooking/grill.mkdwn |           1 | true   |
-      | Node10 | personal/cooking/grill.mkdwn |           1 | true   |
+      | name   | git_repo_path                | public |
+      | Node1  | personal/cooking/grill.mkdwn | true   |
+      | Node2  | personal/cooking/grill.mkdwn | true   |
+      | Node3  | personal/cooking/grill.mkdwn | true   |
+      | Node4  | personal/cooking/grill.mkdwn | true   |
+      | Node5  | personal/cooking/grill.mkdwn | true   |
+      | Node6  | personal/cooking/grill.mkdwn | true   |
+      | Node7  | personal/cooking/grill.mkdwn | true   |
+      | Node8  | personal/cooking/grill.mkdwn | true   |
+      | Node9  | personal/cooking/grill.mkdwn | true   |
+      | Node10 | personal/cooking/grill.mkdwn | true   |
     And I set number of nodes to display on a page to "2"
-    When I follow "home"
+    When I visit "/home/latest"
     Then I should see "Node1"
     And I should see "Node2"
     And I should not see "Node6"
@@ -53,10 +53,24 @@ Feature: Wiki
     When I go to to the home page
     And I follow "Recipes"
     Then I should see "Aunt Debbie's famous bbq sauce"
-  
-  Scenario: About Page
 
-  Scenario: Move git_repo files under /repo
+  Scenario: Previous Post
+    Given I created nodes using
+      | name    | git_repo_path                | public | 
+      | Post 1  | personal/cooking/grill.mkdwn | true   | 
+      | Post 2  | personal/cooking/grill.mkdwn | true   |    
+    And that "Post 1" has earlier (or equal) publish_date than "Post 2"
+    When I visit "home"
+    And I should see "Post 2"
+    And I follow "Previous Post"
+    Then I should see "Post 1"
+
+  Scenario: All Posts
+
+  Scenario: About Page
 
   Scenario: Browse to non-existent page
 
+  Scenario: Able to tag nodes
+
+  Scenario: What if git file moves?

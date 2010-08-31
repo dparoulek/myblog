@@ -1,9 +1,11 @@
 <div class="node-header">
-  <h2 class="node-name"><%= link_to node.name, node %></h2>
   <% if(node.publish_date) 
-       date_format = "%B %d, %Y" %>
-  <div class="icon icon-date">posted on <%= node.publish_date.strftime(date_format) %></div>
+       # date_format = "%Y.%m.%d %H:%M"
+       date_format = "%Y.%m.%d" %>
   <% end %>
+  <div class="date"><%= node.publish_date.strftime(date_format) %>|</div>
+  <h2 class="node-name"> <%= link_to node.name, node %></h2>
+
 <!--   <div class="icon icon-user">posted by Dave</div> -->
 </div>
 <div id="node-contents">

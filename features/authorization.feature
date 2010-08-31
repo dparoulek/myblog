@@ -7,11 +7,11 @@ Feature: Authorization
   Scenario: Admin Access
 
   Scenario: Anonymous Access
-    Given I have set up a git repository inside "../tmp-git-repo"
+    Given I have set up a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     And that I login as "dparoulek@gmail" using password "test"
     When I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
     And I go to the home page
     And I follow "Logout"
     And I follow "home"
-    Then I should see "Recipes"
+    Then I should see "Recipes"   

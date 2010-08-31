@@ -11,29 +11,39 @@
 	<![endif]-->
     <%=stylesheet_link_tag 'blueprint-custom.css', :media => "screen, projection" %>
   </head>
-  <body class="container">
-    <div id="left-col" class="span-6">
-      <h1>Upgrading Dave</h1>
-      <ul id="main-nav">
-	<li><%= link_to "Home", :controller => "home", :action =>"index" %>
-	<% if logged_in? %>
-	<li><a href="/git_repos">Files</a>
-	<li><%= link_to "Manage Peeps", :controller => "people" %> 
-	<li><%= link_to "Logout", :controller => "login", :action =>"logout" %> 
+  <body>
+    <div id="squeeze" class="container">
+      <div id="content" class="span-12">
+	<% if flash[:notice] %>
+	<div id="notice" class="img-text"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
 	<% end %>
-	<% if !logged_in? %>
-	<li><%= link_to "Login", :controller => "login", :action =>"login" %>
-	<% end %>
-	<li><a href="#">Previous Post</a>
-	<li><a href="#">Next Post</a>
-	<li><a href="#">All Posts</a>
-      </ul>
+	<%= yield %>
+      </div>
+      <div id="sidebar" class="span-4 last">
+<!-- 	<h1 id="logo">Upgrading Dave</h1> -->
+	<ul id="main-nav">
+	  <li><%= link_to "Home", :controller => "home", :action =>"index" %>
+	  <% if logged_in? %>
+	  <li><a href="/git_repos">Files</a>
+	  <li><%= link_to "Manage Peeps", :controller => "people" %> 
+	  <li><%= link_to "Logout", :controller => "login", :action =>"logout" %> 
+	  <% end %>
+	  <% if !logged_in? %>
+	  <li><%= link_to "Login", :controller => "login", :action =>"login" %>
+	  <% end %>
+	  <% if @previous_node %>
+	  <li><%= link_to "Previous Post", @previous_node %>
+	  <% end %>
+	  <% if @next_node %>
+	  <li><%= link_to "Next Post", @next_node %>
+	  <% end %>
+	  <li><a href="#">All Posts</a>
+	</ul>
+      </div>
+
     </div>
-    <div id="content" class="span-17 last">
-      <% if flash[:notice] %>
-      <div id="notice" class="img-text"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
-      <% end %>
-        <%= yield %>
+    <div id="footer">
+      About | Copyright 2010, Dave Paroulek
     </div>
   </body>
 </html>

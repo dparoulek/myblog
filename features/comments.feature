@@ -4,7 +4,7 @@ Feature: Comments
   I want others to be able to provide comments
 
   Background:
-    Given I have set up a git repository inside "../tmp-git-repo"
+    Given I have set up a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     And that I login as "dparoulek@gmail" using password "test"
     When I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
