@@ -12,7 +12,7 @@ set :branch, "master"
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/rails/myblog"
 
-role :web, "hokies"                          # Your HTTP server, Apache/etc
+role :web, "hokies", :no_release => true      # Your HTTP server, Apache/etc
 role :app, "jackets"                          # This may be the same as your `Web` server
 role :db,  "jackets", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
