@@ -10,6 +10,7 @@ class Node < ActiveRecord::Base
   
   def default_values
     self.publish_date = DateTime.now unless self.publish_date
+    self.public = true unless self.public
   end
 
   def next_node()

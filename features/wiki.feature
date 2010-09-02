@@ -26,7 +26,7 @@ Feature: Wiki
     Given I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
     And I set the published_on to "Jun 10 2010 5:30pm"
     When I follow "home"
-    Then I should see "posted on June 10, 2010"
+    Then I should see "2010.06.10"
 
   Scenario: Article Pagination
     Given I created nodes using
@@ -64,6 +64,17 @@ Feature: Wiki
     And I should see "Post 2"
     And I follow "Previous Post"
     Then I should see "Post 1"
+
+  Scenario: Previous Post
+    Given I created nodes using
+      | name    | git_repo_path                | public | 
+      | Post 1  | personal/cooking/grill.mkdwn | true   | 
+      | Post 2  | personal/cooking/grill.mkdwn | true   |    
+    And that "Post 1" has later (or equal) publish_date than "Post 2"
+    When I visit "home"
+    And I should see "Post 1"
+    And I follow "Previous Post"
+    Then I should see "Post 2"
 
   Scenario: All Posts
 

@@ -1,11 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  # The priority is based upon order of creation: first created -> highest priority.
   map.resources :comments
-
   map.resources :nodes
-
   map.resources :git_repos
   map.resources :people
-  # The priority is based upon order of creation: first created -> highest priority.
 
   map.connect 'login', :controller => 'login', :action => 'index', :conditions => { :method => :get }
   map.connect 'login', :controller => 'login', :action => 'login', :conditions => { :method => :post }

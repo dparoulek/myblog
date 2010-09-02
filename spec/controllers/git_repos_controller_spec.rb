@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'bloodhound/bloodhound'
+include BloodHound
 
 describe GitReposController do
   before( :each ) do
@@ -52,6 +54,8 @@ describe GitReposController do
 
       it "redirects to the created git_repo" do
         GitRepo.stub(:new).and_return(mock_git_repo(:save => true))
+        @mock_git_repo.should_receive(:path)
+        stub(:reindex).with("some_path").and_return(true)
         post :create, :git_repo => {}
         response.should redirect_to(git_repo_url(mock_git_repo))
       end

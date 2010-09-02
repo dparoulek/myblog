@@ -96,10 +96,13 @@ class GitReposController < ApplicationController
   # POST /git_repos.xml
   def create
     @git_repo = GitRepo.new(params[:git_repo])
-
+    
     respond_to do |format|
       if @git_repo.save
         flash[:notice] = 'GitRepo was successfully created.'
+        if reindex(@git_repo.path)
+          flash[:notice] += ' Search Index was updated successfully'
+        end
         format.html { redirect_to(@git_repo) }
         format.xml  { render :xml => @git_repo, :status => :created, :location => @git_repo }
       else

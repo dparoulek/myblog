@@ -12,7 +12,7 @@ set :user, "dparoulek"
 set :branch, "master"
 set :deploy_via, :remote_cache
 
-set :deploy_to, "/var/rails/myblog"
+set :deploy_to, "/home/myblogadmin"
 
 role :web, "jackets"                          # Your HTTP server, Apache/etc
 role :app, "jackets"                          # This may be the same as your `Web` server

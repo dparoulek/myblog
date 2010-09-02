@@ -12,6 +12,14 @@
     <%=stylesheet_link_tag 'blueprint-custom.css', :media => "screen, projection" %>
   </head>
   <body>
+	<% if logged_in? %>
+	<div id="search">
+	  <form method="GET" action="/search">
+	    <%= text_field_tag("search", "Search" , {:size => 15}) %>
+	    <%= submit_tag("Go") %>
+	  </form>
+	</div>
+        <% end %>
     <div id="squeeze" class="container">
       <div id="content" class="span-12">
 	<% if flash[:notice] %>
