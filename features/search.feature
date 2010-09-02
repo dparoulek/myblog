@@ -4,7 +4,7 @@ Feature: Search
   I want to be able to search my notes
 
   Background: 
-    Given I have set up a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
+    Given I have set up and indexed a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     And that I login as "dparoulek@gmail" using password "test"
     When I visit "/files/notes/personal/cooking/grill.mkdwn"
@@ -13,7 +13,7 @@ Feature: Search
 
   Scenario: Search for private files
     Given that I login as "dparoulek@gmail" using password "test"
-    When I search for "rare"
+    When I search for "bbq"
     Then I should see "grill.mkdwn"
 
   Scenario: Search for public posts

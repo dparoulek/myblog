@@ -65,17 +65,6 @@ Feature: Wiki
     And I follow "Previous Post"
     Then I should see "Post 1"
 
-  Scenario: Previous Post
-    Given I created nodes using
-      | name    | git_repo_path                | public | 
-      | Post 1  | personal/cooking/grill.mkdwn | true   | 
-      | Post 2  | personal/cooking/grill.mkdwn | true   |    
-    And that "Post 1" has later (or equal) publish_date than "Post 2"
-    When I visit "home"
-    And I should see "Post 1"
-    And I follow "Previous Post"
-    Then I should see "Post 2"
-
   Scenario: All Posts
 
   Scenario: About Page

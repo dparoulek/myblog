@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   require 'guarddog/authentication'
   include GuardDog::Authentication
 
+  require 'bloodhound/bloodhound'
+  include BloodHound
+
   before_filter :auth_required
   
   # Scrub sensitive parameters from your log

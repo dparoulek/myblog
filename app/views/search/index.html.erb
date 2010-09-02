@@ -1,5 +1,16 @@
+<% if @phrase %>
+<h2 id="search-header">Here's Some Stuff That Might Be Related To '<%=@phrase%>'</h2>
 <ul class="search_results">
-<% @search_results.each do |result|%>
-<li></li>
+<%   if @search_results 
+       @search_results.each do |result|
+          rel_path = result[:abs_file_path].gsub(result[:git_repo_path], "")
+%>
+<li><a href="<%= "/files/#{result[:git_repo_name]}#{rel_path}" %>"><%= rel_path %></li>
+<%     end
+     else %>
+<li>Sorry, no results for '<%= @phrase %>'</li>
+<%   end %>
+</ul>
+<% else %>
+ <div> Hmmm, search box was empty. Did you mean to search for something else? </div>
 <% end %>
-</ul> 

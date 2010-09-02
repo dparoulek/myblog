@@ -14,12 +14,12 @@ class Node < ActiveRecord::Base
   end
 
   def next_node()
-    @nodes = Node.find_by_sql(["select * from nodes where public = 'true' AND publish_date >= ? AND id > ? order by publish_date DESC, id DESC", self.publish_date, self.id])
+    @nodes = Node.find_by_sql(["select * from nodes where public = 'true' AND publish_date >= ? AND id != ? order by publish_date DESC, id DESC", self.publish_date, self.id])
     @nodes[0]
   end
 
   def previous_node()
-    @nodes = Node.find_by_sql(["select * from nodes where public = 'true' AND publish_date <= ? AND id < ? order by publish_date DESC, id DESC", self.publish_date, self.id])
+    @nodes = Node.find_by_sql(["select * from nodes where public = 'true' AND publish_date <= ? AND id != ? order by publish_date ASC, id ASC", self.publish_date, self.id])
     @nodes[0]
   end
 

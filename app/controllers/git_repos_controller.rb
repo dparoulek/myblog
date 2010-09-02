@@ -100,7 +100,7 @@ class GitReposController < ApplicationController
     respond_to do |format|
       if @git_repo.save
         flash[:notice] = 'GitRepo was successfully created.'
-        if reindex(@git_repo.path)
+        if reindex(@git_repo.path, {:id => @git_repo.id, :git_repo_path => @git_repo.path, :git_repo_name => @git_repo.name})
           flash[:notice] += ' Search Index was updated successfully'
         end
         format.html { redirect_to(@git_repo) }

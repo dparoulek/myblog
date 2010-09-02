@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Git repo</th>
     <th>Git repo path</th>
@@ -10,6 +11,7 @@
 
 <% @nodes.each do |node| %>
   <tr>
+    <td><%=h node.id %></td>
     <td><%=h node.name %></td>
     <td><%=h node.git_repo_id %></td>
     <td><%=h node.git_repo_path %></td>

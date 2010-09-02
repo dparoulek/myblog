@@ -48,14 +48,18 @@ describe GitReposController do
     describe "with valid params" do
       it "assigns a newly created git_repo as @git_repo" do
         GitRepo.stub(:new).with({'these' => 'params'}).and_return(mock_git_repo(:save => true))
+        @mock_git_repo.should_receive(:path).twice
+        @mock_git_repo.should_receive(:name)
+        controller.stub(:reindex).and_return(true)
         post :create, :git_repo => {:these => 'params'}
         assigns[:git_repo].should equal(mock_git_repo)
       end
 
       it "redirects to the created git_repo" do
         GitRepo.stub(:new).and_return(mock_git_repo(:save => true))
-        @mock_git_repo.should_receive(:path)
-        stub(:reindex).with("some_path").and_return(true)
+        @mock_git_repo.should_receive(:path).twice
+        @mock_git_repo.should_receive(:name)
+        controller.stub(:reindex).and_return(true)
         post :create, :git_repo => {}
         response.should redirect_to(git_repo_url(mock_git_repo))
       end

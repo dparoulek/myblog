@@ -49,3 +49,5 @@ Feature: Browse Git Repository
     Then I should see "Listing git_repos"
     And I should see "notes"
     
+
+  Scenario: Syncronize notes by pulling local git repo from remote location
