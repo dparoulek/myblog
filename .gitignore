@@ -2,3 +2,4 @@ log
 db/*.sqlite3
 tmp
 .sass-cache/
+config/database.yml
