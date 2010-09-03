@@ -10,15 +10,9 @@ set :user, "dparoulek"
 
 set :branch, "master"
 set :deploy_via, :remote_cache
-set :deploy_to, "/var/rails/myblog"
+set :deploy_to, "/home/myblogadmin/myblog"
 
-role :web, "hokies", :no_release => true      # Your HTTP server, Apache/etc
+role :web, "hokies"                           # Your HTTP server, Apache/etc
 role :app, "jackets"                          # This may be the same as your `Web` server
 role :db,  "jackets", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
-
-task :move_static_files, :roles => :web do
-  desc "Starting moving the static public files to Apache Document Root."
-  upload("/var/rails/#{application}/public", "/home/myblogadmin/", :via => :scp, :recursive => true)
-  desc "Ending moving the static public files to Apache Document Root."
-end

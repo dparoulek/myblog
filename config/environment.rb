@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem "rdiscount"
   config.gem "org-ruby"
   config.gem "haml"
+  config.gem "ferret"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

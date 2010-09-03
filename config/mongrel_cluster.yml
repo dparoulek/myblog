@@ -1,7 +1,7 @@
 --- 
-log_file: /var/rails/myblog/current/log/myblog.log
+log_file: /home/myblogadmin/myblog/current/log/myblog.log
 port: 54300
-cwd: /var/rails/myblog/current
+cwd: /home/myblogadmin/myblog/current
 environment: production
-pid_file: /var/rails/myblog/current/tmp/pids/mongrel.pid
+pid_file: /home/myblogadmin/myblog/current/tmp/pids/mongrel.pid
 servers: 1
