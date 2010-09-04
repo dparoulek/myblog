@@ -1,0 +1,90 @@
+#! /bin/perl 
+# (change the line above to ! perl to run on windows)
+
+#***************************************************************#
+#  NAME
+#       csv_to_inserts.pl
+#
+#  SYNOPSIS
+#       Transforms csv file into set of insert statements
+#
+#  DESCRIPTION
+#       csv_to_inserts.sh <name of csv file>
+#
+#       This script expects the name of the csv file to convert. It 
+#       will create an file inside the same directory containing 
+#       insert statements. 
+#
+#  AUTHOR
+#       Dave Paroulek
+#
+#  COPYRIGHT
+#       Copyright (c) 2007 David Paroulek
+#
+#       Permission is hereby granted, free of charge, to any person obtaining
+#       a copy of this software and associated documentation files (the
+#       "Software"), to deal in the Software without restriction, including
+#       without limitation the rights to use, copy, modify, merge, publish,
+#       distribute, sublicense, and/or sell copies of the Software, and to
+#       permit persons to whom the Software is furnished to do so.
+#
+#       BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO
+#       WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
+#       EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR
+#       OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY
+#       KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
+#       IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+#       PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
+#       PROGRAM IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME
+#       THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+#
+#       IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN
+#       WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY
+#       AND/OR REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU
+#       FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR
+#       CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+#       PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+#       RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR Aa
+#       FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF
+#       SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+#       DAMAGES.
+#
+#***************************************************************#
+
+use strict;
+use warnings;
+use Text::CSV;
+
+sub validate {
+	my (@tmp_array) = @_;
+	foreach (@tmp_array){
+		s/'/''/g;
+		s/&/&'||'/g;
+	}
+	return @tmp_array;
+}
+
+my $file = "example.csv";
+my $outfile = "insert_stmts.sql";
+
+print "Processing $file \n";
+
+my $csv = Text::CSV->new();
+
+open CSV, "<$file" or die $!;
+open OUT,">$outfile" or die $!;
+
+while (<CSV>) {
+	if ($csv->parse($_)) {
+	    my @columns = $csv->fields();
+	    @columns = validate(@columns);
+	    print OUT "INSERT INTO SCHEMA.TABLE (APPROVE_DATE , USERNAME ,IP_ADDRESS ,SALUTATION ,FIRST_NAME , MIDDLE_NAME ,LAST_NAME ,PHONE ,EMAIL ,ORGANIZATION , EMPLOYMENT_TYPE ,POC_SALUTATION ,POC_FIRST_NAME , POC_MIDDLE_NAME ,POC_LAST_NAME ,POC_PHONE ,POC_EMAIL ) VALUES ('$columns[0]' ,'$columns[1]' ,'$columns[2]' ,'$columns[3]' ,'$columns[4]' ,'$columns[5]' ,'$columns[6]' ,'$columns[7]' ,'$columns[8]' ,'$columns[9]' ,'$columns[10]' ,'$columns[11]' , '$columns[12]' ,'$columns[13]' ,'$columns[14]' ,'$columns[15]' ,'$columns[16]'  );\n";
+	} else {
+	    my $err = $csv->error_input;
+	    print "Failed to parse line: $err";
+	}
+}
+close OUT;
+close CSV;
+
+print "Conversion Completed Successfully\n"; 
