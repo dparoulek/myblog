@@ -52,6 +52,10 @@ a {
     }
 }
 
+#footer {
+    margin-left: 320px;
+}
+
 h2.node-name {
     a{
 	font-size: 24px;
@@ -66,16 +70,6 @@ div.date {
     font-size: 24px;
     float:left;
 }
-
-/* #logo { */
-/*     height: 67px; */
-/*     text-indent: -2000px */
-/* } */
-
-/* #footer { */
-/*      height: 1300px; */
-/*      background: url('/images/bottom.jpg') bottom center no-repeat; */
-/* } */
 
 
 
@@ -112,4 +106,12 @@ ul#main-nav {
 
 #search {
 	margin-left: 322px;
+}
+
+#node-contents p img {
+border: 2px solid #BDE4FF;
+/* border: 2px solid #A67029; */
+float: left;
+margin: 3px 10px 6px 0px;
+
 }

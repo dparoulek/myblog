@@ -7,6 +7,16 @@ Feature: My Blog
     When I go to the home page
     Then I should see "Login"
 
+  Scenario: About Page
+    Given I have set up a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
+    And that I have registered an account using "dparoulek@gmail" as username and "test" as password
+    And that I login as "dparoulek@gmail" using password "test"
+    And I visit "/files/notes/personal/cooking/grill.mkdwn"
+    And I press "Create and Publish"
+    When I configure "grill.mkdwn" to be the About page
+    And I follow "About"
+    Then I should see "bbq"
+
   Scenario: link to Twitter Account
  
   Scenario: RSS Feed

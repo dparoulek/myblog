@@ -30,3 +30,10 @@ Given /^that "([^"]*)" has earlier \(or equal\) publish_date than "([^"]*)"$/ do
 #   second_post.next_node.should == nil
 #   second_post.previous_node.id.should == first_post.id
 end
+
+When /^I configure "([^"]*)" to be the About page$/ do |node_name|
+  node =  Node.find_by_name(node_name)
+  node.friendly_url = 'about'
+  node.save!
+end
+

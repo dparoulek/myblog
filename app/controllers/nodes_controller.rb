@@ -15,7 +15,12 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.xml
   def show
-    @node = Node.find(params[:id])
+    if(params[:path])
+      path = params[:path] * '/'
+      @node = Node.find_by_friendly_url(path)
+    else
+      @node = Node.find(params[:id])
+    end
     if(@node)
       @previous_node = @node.previous_node
       @next_node = @node.next_node

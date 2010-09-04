@@ -1,3 +1,6 @@
+<% if logged_in? %>
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<% end %>
 <%= render(:partial => "nodes/node", :object => @node) %>
 <% @node.comments.each do |comment| %>
 <%= comment.comment %>
@@ -5,6 +8,6 @@
 <% if @comment %>
 <%= render(:partial => "comments/new_comment", :object => @comment) %>
 <% end %>
-
+<% if logged_in? %>
 <%= link_to 'Edit', edit_node_path(@node) %> |
-<%= link_to 'Back', nodes_path %>
+<% end %>

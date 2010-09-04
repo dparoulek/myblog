@@ -146,4 +146,11 @@ describe NodesController do
     end
   end
 
+  describe "" do
+    it "should show correct node when given a friendly url" do
+      first = Node.create!(:name => "First", :public => true, :publish_date => DateTime.now, :friendly_url => "/about")
+      params_from(:get, "/about").should == {:controller => "nodes", :action => "show", :path => ["about"]} 
+    end
+  end
+
 end

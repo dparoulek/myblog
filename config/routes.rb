@@ -54,4 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'files/:name/*path', :controller => 'git_repos', :action => 'list'
   map.connect 'files', :controller => 'git_repos'
 
+  # Map friendly urls
+  map.connect '*path', :controller => 'nodes', :action => 'show'
+
 end

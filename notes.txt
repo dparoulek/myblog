@@ -1,10 +1,15 @@
 Next: 
 
-- write capistrano script and deploy to dev
-- Add Search (using the lucene ruby library)
+- Add About page
+- captcha
+
+- change tests to use blog project as test git repo
 - Convert guarddog to gem
 - Add Twitter Link
 - Add Icons
 - Add sidebar headers
-- Add About page
+- able to add images locally
+- Link / broken image checker
+
+
 

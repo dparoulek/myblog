@@ -31,8 +31,10 @@
 <!-- 	<h1 id="logo">Upgrading Dave</h1> -->
 	<ul id="main-nav">
 	  <li><%= link_to "Home", :controller => "home", :action =>"index" %>
+          <li><a href="/about">About</a>
 	  <% if logged_in? %>
 	  <li><a href="/git_repos">Files</a>
+          <li><%= link_to 'Manage Posts', nodes_path %>
 	  <li><%= link_to "Manage Peeps", :controller => "people" %> 
 	  <li><%= link_to "Logout", :controller => "login", :action =>"logout" %> 
 	  <% end %>
@@ -51,7 +53,8 @@
 
     </div>
     <div id="footer">
-      About | Copyright 2010, Dave Paroulek
+          <li><a href="/about">About</a> | 
+	  Copyright <%= Time.new.year %>, Dave Paroulek
     </div>
   </body>
 </html>
