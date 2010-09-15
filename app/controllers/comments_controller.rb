@@ -44,12 +44,15 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
 
+    # Check Captcha
+    @recaptcha = validate_captcha(RECAPTCHA_PRIVATE_KEY, request.remote_ip, params['recaptcha_challenge_field'], params['recaptcha_response_field'])
+
     respond_to do |format|
-      if @comment.save
+      if @recaptcha && @recaptcha['success'] && @comment.save # order is important here
         flash[:notice] = "Thanks for your comment!"
         format.html { 
           if params[:redirect_back].blank? 
-             redirect_to(@comment) 
+            redirect_to(@comment) 
           else
             back = request.env['HTTP_REFERER'] || @comment
             redirect_to(back)
@@ -57,6 +60,9 @@ class CommentsController < ApplicationController
         }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
+        if(!@recaptcha['success'])
+          @comment.errors.add('recaptcha_response_field', @recaptcha['message'])
+        end
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end

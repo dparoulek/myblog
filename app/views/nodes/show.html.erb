@@ -2,9 +2,16 @@
 <%= link_to 'Edit', edit_node_path(@node) %> |
 <% end %>
 <%= render(:partial => "nodes/node", :object => @node) %>
-<% @node.comments.each do |comment| %>
-<%= comment.comment %>
+
+<ul id="comments_container">
+<h2 id="comments_header">Comments</h2>
+  <% @node.comments.each do |comment| %>
+  <li id="comment-<%= comment.id %>" class="comment">
+    <div class="comment_author"><%= comment.username %></div>
+    <div class="comment_body"><%= comment.comment %></div>
+  </li>
 <% end %>
+</ul>
 <% if @comment %>
 <%= render(:partial => "comments/new_comment", :object => @comment) %>
 <% end %>

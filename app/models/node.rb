@@ -85,17 +85,19 @@ class Node < ActiveRecord::Base
 end
 
 
+
 # == Schema Information
 #
 # Table name: nodes
 #
 #  id            :integer         not null, primary key
 #  name          :string(255)
-#  git_repo_id   :string(255)
 #  git_repo_path :string(255)
 #  public        :boolean
 #  publish_date  :datetime
 #  created_at    :datetime
 #  updated_at    :datetime
+#  git_repo_id   :integer
+#  friendly_url  :string(255)
 #
 

@@ -4,6 +4,7 @@ describe CommentsController do
 
   before( :each ) do
     controller.stub!(:auth_required)
+    controller.stub!(:validate_captcha).and_return({'success'=> true})
   end
 
   def mock_comment(stubs={})
@@ -61,6 +62,7 @@ describe CommentsController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved comment as @comment" do
         Comment.stub(:new).with({'these' => 'params'}).and_return(mock_comment(:save => false))
+
         post :create, :comment => {:these => 'params'}
         assigns[:comment].should equal(mock_comment)
       end

@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
   require 'bloodhound/bloodhound'
   include BloodHound
 
+  require 'recaptcha/recaptcha'
+  include Recaptcha
+
   before_filter :auth_required
   
   # Scrub sensitive parameters from your log

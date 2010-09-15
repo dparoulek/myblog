@@ -10,6 +10,8 @@
 	<%=stylesheet_link_tag 'blueprint/ie.css', :media => "screen, projection" %>
 	<![endif]-->
     <%=stylesheet_link_tag 'blueprint-custom.css', :media => "screen, projection" %>
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+    <%=javascript_include_tag 'blueprint/myblog-custom.js' %>
   </head>
   <body>
 	<% if logged_in? %>

@@ -9,11 +9,16 @@
   </p>
   <p>
     <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
+    <%= f.text_area :comment, :rows => 5 %>
   </p>
   <%= f.hidden_field :parent_id %>
   <%= f.hidden_field :node_id %>
   <input type="hidden" value="<%= @redirect_back %>" id="redirect_back" name="redirect_back" />
+
+  <p id="recaptcha_div"></p>
+  <script type="text/javascript">
+    showRecaptcha("<%= RECAPTCHA_PUBLIC_KEY %>", "recaptcha_div")
+  </script>
   <p>
     <%= f.submit 'submit' %>
   </p>

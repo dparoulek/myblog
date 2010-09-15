@@ -1,0 +1,9 @@
+<script type="text/javascript">
+  Recaptcha.create("<%= CAPTCHA_PUBLIC_KEY %>",
+    "element_id",
+    {
+      theme: "red",
+      callback: Recaptcha.focus_response_field
+    }
+  )
+</script>;

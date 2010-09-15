@@ -12,4 +12,18 @@ Next:
 - Link / broken image checker
 
 
+CAPTCHA
+
+Domain Name:	upgradingdave.com
+This is a global key. It will work across all domains.
+
+Public Key:	6Ldy0rwSAAAAAA1RzQ4YwMAuVPq5i___lPEBv3He
+Use this in the JavaScript code that is served to your users
+
+Private Key:	6Ldy0rwSAAAAACf9aQPlXTh7uUJMHIFAXBgGIPq5
+Use this when communicating between your server and our server. Be sure to keep it a secret.
+
+http://code.google.com/apis/recaptcha/intro.html
+
+
 

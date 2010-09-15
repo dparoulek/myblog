@@ -13,3 +13,17 @@ describe Comment do
     Comment.create!(@valid_attributes)
   end
 end
+
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer         not null, primary key
+#  username   :string(255)
+#  comment    :text
+#  parent_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  node_id    :integer
+#
+

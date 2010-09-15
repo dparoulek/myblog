@@ -20,4 +20,23 @@ Feature: Comments
     And I should see "We made the sauce last night and it was delicious!"
     And I should not see "Parent"
 
-    
+  Scenario: Must enter captcha to leave comment
+    When I go to the home page
+    And I follow "Recipes"
+    And I fill in "Dave" for "comment_username"
+    And I fill in "We made the sauce last night and it was delicious!" for "comment_comment"
+    And I fill in the correct captcha
+    And I press "submit"
+    Then I should see "Thanks for your comment!"
+    And I should see "We made the sauce last night and it was delicious!"
+    And I should not see "Parent"
+
+  Scenario: Must complete captcha in order to leave comment
+    When I go to the home page
+    And I follow "Recipes"
+    And I fill in "Dave" for "comment_username"
+    And I fill in "We made the sauce last night and it was delicious!" for "comment_comment"
+    And I press "submit"
+    Then I should see "Please try again"
+
+  Scenario: If captcha is entered incorrectly, then it should keep the original comment
