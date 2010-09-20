@@ -45,10 +45,19 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     # Check Captcha
-    @recaptcha = validate_captcha(RECAPTCHA_PRIVATE_KEY, request.remote_ip, params['recaptcha_challenge_field'], params['recaptcha_response_field'])
+    # HACK Alert! Not sure any other way to test this other than check if this is cucumber and if it is, return true
+    if ENV['RAILS_ENV'].eql? "cucumber"
+      if ENV['captcha_result'].eql? "pass"
+        @recaptcha =  {'success' => true}        
+      else
+        @recaptcha =  {'success' => false, 'message' => "Invalid captcha"}        
+      end
+    else
+      @recaptcha = validate_captcha(RECAPTCHA_PRIVATE_KEY, request.remote_ip, params['recaptcha_challenge_field'], params['recaptcha_response_field'])
+    end
 
     respond_to do |format|
-      if @recaptcha && @recaptcha['success'] && @comment.save # order is important here
+      if @recaptcha && @recaptcha['success'] && @comment.save 
         flash[:notice] = "Thanks for your comment!"
         format.html { 
           if params[:redirect_back].blank? 

@@ -3,15 +3,21 @@
 <% end %>
 <%= render(:partial => "nodes/node", :object => @node) %>
 
-<ul id="comments_container">
+
 <h2 id="comments_header">Comments</h2>
   <% @node.comments.each do |comment| %>
-  <li id="comment-<%= comment.id %>" class="comment">
-    <div class="comment_author"><%= comment.username %></div>
-    <div class="comment_body"><%= comment.comment %></div>
-  </li>
+  <div id="comment-<%= comment.id %>" class="comment-container">
+    <div class="comment-top"><span></span></div>
+    <div class="comment-content">
+      <!-- CONTENT BEGIN -->
+      <div class="comment-author"><%= comment.username %>, Commented <%= time_ago_in_words(Time.now) %> ago</div>
+      <div class="comment-body"><%= comment.comment %></div>
+      <!-- CONTENT END -->
+    </div>
+    <div class="comment-bottom"><span></span></div>
+  </div>
 <% end %>
-</ul>
+
 <% if @comment %>
 <%= render(:partial => "comments/new_comment", :object => @comment) %>
 <% end %>

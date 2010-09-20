@@ -1,15 +1,15 @@
+When /^I fill in the correct captcha$/ do
+  #  This is a bit of a hack, but in comments controller, I check if
+  #  RAILS_ENV is cucumber and, if so, I return
+  #  session['captcha_result'] from the captcha stuff.
 
-# Redefine validate_captcha for here
-module Recaptcha
-  class Recaptcha
-    def self.validate_captcha
-      return true
-    end  
-  end
+  ENV['captcha_result'] = "pass"
 end
 
-When /^I fill in the correct captcha$/ do
-#  Recaptcha::Recaptcha.stub!(:validate_captcha).and_return(true)
-#   self.should_receive(:validate_captcha)
-  Recaptcha::Recaptcha.validate_captcha.should be true
+When /^I fill in an incorrect captcha$/ do
+  #  This is a bit of a hack, but in comments controller, I check if
+  #  RAILS_ENV is cucumber and, if so, I return
+  #  session['captcha_result'] from the captcha stuff.
+
+  ENV['captcha_result'] = "fail"
 end
