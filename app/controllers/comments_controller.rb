@@ -44,6 +44,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
 
+    # calculate where to redirect back to
+    back = @comment
+    if !params[:redirect_back].blank? 
+      back = params[:redirect_back]
+    end
+
     # Check Captcha
     # HACK Alert! Not sure any other way to test this other than check if this is cucumber and if it is, return true
     if ENV['RAILS_ENV'].eql? "cucumber"
@@ -60,18 +66,14 @@ class CommentsController < ApplicationController
       if @recaptcha && @recaptcha['success'] && @comment.save 
         flash[:notice] = "Thanks for your comment!"
         format.html { 
-          if params[:redirect_back].blank? 
-            redirect_to(@comment) 
-          else
-            back = request.env['HTTP_REFERER'] || @comment
-            redirect_to(back)
-          end
+          redirect_to(back)
         }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         if(!@recaptcha['success'])
           @comment.errors.add('recaptcha_response_field', @recaptcha['message'])
         end
+        @redirect_back = back
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end

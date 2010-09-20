@@ -27,7 +27,7 @@ class NodesController < ApplicationController
     end
     @comment = Comment.new(:node_id => @node.id)
     @comment.node_id = @node.id
-    @redirect_back = true
+    @redirect_back = request.request_uri
 
     respond_to do |format|
       format.html # show.html.erb
