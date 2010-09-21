@@ -28,3 +28,11 @@ config.action_mailer.delivery_method = :test
 # config.active_record.schema_format = :sql
 
   config.gem 'rspec-rails', :version => '>= 1.3.2', :lib => false unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
+
+
+INCLUDE_GOOGLE_ANALYTICS=false
+
+# Recaptcha is enabled in the test environment, but the rspec tests
+# stub out the method so that it really isn't connecting to recaptcha
+# server
+RECAPTCHA_ENABLED=true

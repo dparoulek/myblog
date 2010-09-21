@@ -51,15 +51,14 @@ class CommentsController < ApplicationController
     end
 
     # Check Captcha
-    # HACK Alert! Not sure any other way to test this other than check if this is cucumber and if it is, return true
-    if ENV['RAILS_ENV'].eql? "cucumber"
+    if RECAPTCHA_ENABLED
+      @recaptcha = validate_captcha(RECAPTCHA_PRIVATE_KEY, request.remote_ip, params['recaptcha_challenge_field'], params['recaptcha_response_field'])
+    else
       if ENV['captcha_result'].eql? "pass"
         @recaptcha =  {'success' => true}        
       else
         @recaptcha =  {'success' => false, 'message' => "Invalid captcha"}        
       end
-    else
-      @recaptcha = validate_captcha(RECAPTCHA_PRIVATE_KEY, request.remote_ip, params['recaptcha_challenge_field'], params['recaptcha_response_field'])
     end
 
     respond_to do |format|
