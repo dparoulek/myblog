@@ -21,8 +21,8 @@ module DrupalHelpers
         :hostname => drupal_comment.at_xpath('.//hostname').content, 
         :node_id => drupal_comment.at_xpath('.//nid').content,
         # drupal dates are in millis since epoch
-        :created_at => Time.at(drupal_comment.at_xpath('.//timestamp').content),
-        :updated_at => Time.at(drupal_comment.at_xpath('.//timestamp').content)
+        :created_at => Time.at(drupal_comment.at_xpath('.//timestamp').content.to_i),
+        :updated_at => Time.at(drupal_comment.at_xpath('.//timestamp').content.to_i)
       }
     end
   end
