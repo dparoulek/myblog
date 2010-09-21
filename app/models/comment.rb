@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :username, :comment
 end
 
+
 # == Schema Information
 #
 # Table name: comments
@@ -14,5 +15,9 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #  node_id    :integer
+#  email      :string(255)
+#  homepage   :string(255)
+#  subject    :string(255)
+#  hostname   :string(255)
 #
 

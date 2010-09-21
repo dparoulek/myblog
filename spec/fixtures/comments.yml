@@ -10,6 +10,7 @@ two:
   comment: MyText
   parent_id: 1
 
+
 # == Schema Information
 #
 # Table name: comments
@@ -21,5 +22,9 @@ two:
 #  created_at :datetime
 #  updated_at :datetime
 #  node_id    :integer
+#  email      :string(255)
+#  homepage   :string(255)
+#  subject    :string(255)
+#  hostname   :string(255)
 #
 

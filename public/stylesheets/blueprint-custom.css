@@ -134,10 +134,15 @@ ul#comments_container {
     margin: 0px;
 }
 
-.comment-content {
+.comment-content-container{
     background: #0d2333;
-    padding:0 30px;
-    margin:0px;
+}
+
+.comment-content {
+    width: 420px;
+    padding:0px;
+    margin:0 20px;
+    overflow: hidden;
 }
 
 .comment-bottom {
@@ -149,3 +154,4 @@ ul#comments_container {
 .comment-author {
     color: #FFC77F;
 }
+

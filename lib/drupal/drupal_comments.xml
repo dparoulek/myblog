@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+-
+- phpMyAdmin XML Dump
+- version 2.6.4-pl3
+- http://www.phpmyadmin.net
+-
+- Host: db1598.perfora.net
+- Generation Time: Sep 20, 2010 at 03:49 PM
+- Server version: 5.0.81
+- PHP Version: 5.2.6-1+lenny9
+-->
+
+<!--
+- Database: `db254593078`
+-->
+<db254593078>
+  <!-- Table comments -->
+    <comments>
+        <cid>1</cid>
+        <pid>0</pid>
+        <nid>33</nid>
+        <uid>0</uid>
+        <subject>Thanks!</subject>
+        <comment>Thanks for the overview, I was able to solve my problem by changing env variables. </comment>
+        <hostname>65.201.161.126</hostname>
+        <timestamp>1227274412</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>01/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>John</name>
+        <mail>john@john.com</mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>2</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Many thanks for putting this</subject>
+        <comment>Many thanks for putting this up. I was scratching my head when I went traipsing around the repo and could find the poms but no jars.
+
+Saved me quite a bit of time. For whatever reason, the last thing I think about when dealing with most open source initiatives is licensing issues.
+
+</comment>
+        <hostname>198.245.202.250</hostname>
+        <timestamp>1234560506</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>01/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>anthony</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>3</cid>
+        <pid>2</pid>
+        <nid>29</nid>
+        <uid>1</uid>
+        <subject>No Problem</subject>
+        <comment>Hi Anthony, I'm very glad it helped. 
+- Dave</comment>
+        <hostname>65.201.161.126</hostname>
+        <timestamp>1235485615</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>01.00/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Dave</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>4</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Just to echo previous point,</subject>
+        <comment>Just to echo previous point, very useful post and helped me out. Only entry returned when searching google!  
+
+-Paul</comment>
+        <hostname>139.149.31.232</hostname>
+        <timestamp>1236359154</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>02/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Anonymous</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>6</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Used older log4j</subject>
+        <comment>I managed to avoid the issue by changing my pom to depend on log4j v1.204</comment>
+        <hostname>142.160.2.66</hostname>
+        <timestamp>1237561298</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>04/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Anchormath</name>
+        <mail>ankursmail@gmail.com</mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>7</cid>
+        <pid>6</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Use</subject>
+        <comment>Use this:
+&lt;dependency&gt;
+			&lt;groupId&gt;log4j&lt;/groupId&gt;
+			&lt;artifactId&gt;log4j&lt;/artifactId&gt;
+			&lt;version&gt;1.2.14&lt;/version&gt;
+		&lt;/dependency&gt;</comment>
+        <hostname>62.143.175.100</hostname>
+        <timestamp>1239042865</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>04.00/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Anonymous</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>8</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Thank you!!!!</subject>
+        <comment>Holy crap thanks... it's funny when I just told my wife I'm about to pull my hair out, and your blog says &quot;at wits end&quot;.
+
+Goddamn SUN for their stupid mis-management of java! I'm so glad Oracle is buying them. This is not even close to the first time I've had stupid issues with SUN, can anyone say &quot;no file/dir copy&quot; in the JDK?
+
+Anyway, bless you for this one. I owe you a beer if you're ever in Atlanta.</comment>
+        <hostname>98.18.38.216</hostname>
+        <timestamp>1245624907</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>05/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Leif Ashley</name>
+        <mail>leifashley@gmail.com</mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>9</cid>
+        <pid>7</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>pwn - nice.
+Verified working</subject>
+        <comment>pwn - nice.
+
+Verified working</comment>
+        <hostname>98.18.38.216</hostname>
+        <timestamp>1245624960</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>04.00.00/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Leif Ashley</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>10</cid>
+        <pid>0</pid>
+        <nid>19</nid>
+        <uid>0</uid>
+        <subject>Thanks!</subject>
+        <comment>Thanks for this post!
+
+You save my day!
+I'm searching for 3 hours, trying, testing, swearing! 
+
+Then i read your post and now it works.
+
+a big THANKS from Germany!
+
+Greetings
+
+David</comment>
+        <hostname>195.144.31.83</hostname>
+        <timestamp>1245663441</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>01/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>David</name>
+        <mail>sling@in.xbash.net</mail>
+        <homepage>http://www.hansis-braindump.de</homepage>
+    </comments>
+    <comments>
+        <cid>12</cid>
+        <pid>8</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Seconded. Thanks so much for</subject>
+        <comment>Seconded. Thanks so much for the very detailed instructions, Dave.
+
+Alternatively, add SUN's own Maven repository, and the dependencies will be resolved automatically (I think the repo was created after Dave had written this). To do this, append this to your pom.xml:
+
+	&lt;repositories&gt;
+		&lt;repository&gt;
+			&lt;id&gt;maven2-repository.dev.java.net&lt;/id&gt;
+			&lt;name&gt;Java.net Repository for Maven&lt;/name&gt;
+			&lt;url&gt;http://download.java.net/maven/2/&lt;/url&gt;
+		&lt;/repository&gt;
+	&lt;/repositories&gt;</comment>
+        <hostname>195.28.224.59</hostname>
+        <timestamp>1249369623</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>05.00/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Anonymous</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>13</cid>
+        <pid>12</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Hrmbl. Tags are getting</subject>
+        <comment>Hrmbl. Tags are getting eaten by the blog app. Correction: To do this, append this to your pom.xml:
+
+	&amp;lt;repositories&amp;gt;
+		&amp;lt;repository&amp;gt;
+			&amp;lt;id&amp;gt;maven2-repository.dev.java.net&amp;lt;/id&amp;gt;
+			&amp;lt;name&amp;gt;Java.net Repository for Maven&amp;lt;/name&amp;gt;
+			&amp;lt;url&amp;gt;http://download.java.net/maven/2/&amp;lt;/url&amp;gt;
+		&amp;lt;/repository&amp;gt;
+	&amp;lt;/repositories&amp;gt;</comment>
+        <hostname>195.28.224.59</hostname>
+        <timestamp>1249369739</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>05.00.00/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Anonymous</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>14</cid>
+        <pid>0</pid>
+        <nid>35</nid>
+        <uid>0</uid>
+        <subject>Java Web Service Stub transmitting binary characters</subject>
+        <comment>I am having problems with embedded binary characters in my input parameter when I call the Java Web Service stub class generated by wsdl2java.  It returns with the error message:
+
+org.apache.axis2.AxisFault: Invalid white space character (0x1d) in text to output
+	at org.apache.axis2.AxisFault.makeFault(AxisFault.java:430)
+	at org.apache.axis2.transport.http.SOAPMessageFormatter.writeTo(SOAPMessageFormatter.java:83)
+	at org.apache.axis2.transport.http.AxisRequestEntity.writeRequest(AxisRequestEntity.java:84)
+	at org.apache.commons.httpclient.methods.EntityEnclosingMethod.writeRequestBody(EntityEnclosingMethod.java:499)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:2114)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1096)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:398)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.apache.axis2.transport.http.AbstractHTTPSender.executeMethod(AbstractHTTPSender.java:542)
+	at org.apache.axis2.transport.http.HTTPSender.sendViaPost(HTTPSender.java:189)
+	at org.apache.axis2.transport.http.HTTPSender.send(HTTPSender.java:75)
+	at org.apache.axis2.transport.http.CommonsHTTPTransportSender.writeMessageWithCommons(CommonsHTTPTransportSender.java:364)
+	at org.apache.axis2.transport.http.CommonsHTTPTransportSender.invoke(CommonsHTTPTransportSender.java:208)
+	at org.apache.axis2.engine.AxisEngine.send(AxisEngine.java:448)
+	at org.apache.axis2.description.OutInAxisOperationClient.send(OutInAxisOperation.java:401)
+	at org.apache.axis2.description.OutInAxisOperationClient.executeImpl(OutInAxisOperation.java:228)
+	at org.apache.axis2.client.OperationClient.execute(OperationClient.java:163)
+
+
+Any suggestion?</comment>
+        <hostname>12.152.181.160</hostname>
+        <timestamp>1251387147</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>01/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Reggie</name>
+        <mail>acct8686@yahoo.com</mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>16</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>commons-logging</subject>
+        <comment>I added the sun repository location, but still got build problems - jar couldn't be found, so I guess Sun can't be trusted with this.
+
+I just removed the dependency on log4j by using commons-logging instead for my project.</comment>
+        <hostname>81.130.47.21</hostname>
+        <timestamp>1252327571</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>06/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Mick</name>
+        <mail>mick@ecreate.co.uk</mail>
+        <homepage>http://www.ecreate.co.uk</homepage>
+    </comments>
+    <comments>
+        <cid>19</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>You can also exclude the dependencies</subject>
+        <comment>You can exclude the dependencies on JMX and JMS with the caveat that some of the lo4gj appenders that depend on these packages wont be available, which is fine unless you need them. It will however allow you to use Log4j version 1.2.15
+
+http://www.btaz.com/java/maven-log4j-and-javax-jms/</comment>
+        <hostname>173.55.237.49</hostname>
+        <timestamp>1253125790</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>07/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Michael</name>
+        <mail>msundell@gmail.com</mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>28</cid>
+        <pid>2</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>Very good post, thanks a</subject>
+        <comment>Very good post, thanks a lot.</comment>
+        <hostname>79.191.157.84</hostname>
+        <timestamp>1262171241</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>01.01/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>dido</name>
+        <mail>035zaklikniecie@gmail.com</mail>
+        <homepage>http://www.india.com</homepage>
+
+    </comments>
+    <comments>
+        <cid>30</cid>
+        <pid>0</pid>
+        <nid>35</nid>
+        <uid>0</uid>
+        <subject>Try this
+wsdl2java -uri</subject>
+        <comment>Try this
+
+wsdl2java -uri http://www.webservicex.net/WeatherForecast.asmx?WSDL</comment>
+        <hostname>59.93.19.192</hostname>
+        <timestamp>1263895183</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>02/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Sudheer</name>
+        <mail>sudheer.clt@gmail.com</mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>39</cid>
+        <pid>7</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>1000 * thankyou</subject>
+        <comment>That was a lifesaver, just changing from log4j 1.2.15 to 1.2.14 worked like a charm for me. It seems Oracle have taken jms and jmx out of the dev.java.net Maven repo, and 1.2.15 depends on them. Thankfully I'm not using any of those features, so downgrading made it all go away.
+
+Of course it was most of the morning wasted before I stumbled across this page... Logging should *not* cause this many headaches under any circumstances.</comment>
+        <hostname>78.105.3.98</hostname>
+        <timestamp>1266845291</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>04.00.01/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Andrew Clegg</name>
+        <mail>andrew.clegg.signups@gmail.com</mail>
+        <homepage>http://biotext.org.uk/</homepage>
+    </comments>
+    <comments>
+        <cid>49</cid>
+        <pid>0</pid>
+        <nid>29</nid>
+        <uid>0</uid>
+        <subject>There's a Maven repo with</subject>
+        <comment>There's a Maven repo with some Sun deps, I found it at http://ondra.zizka.cz/stranky/programovani/java/maven/log4j-missing-jmx-sun-deps.texy</comment>
+        <hostname>62.245.101.4</hostname>
+        <timestamp>1271031603</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>08/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Petr</name>
+        <mail></mail>
+        <homepage></homepage>
+    </comments>
+    <comments>
+        <cid>58</cid>
+        <pid>0</pid>
+        <nid>33</nid>
+        <uid>0</uid>
+        <subject>re:</subject>
+        <comment>Excellent. Thanks for the knowledge. I found another good articles about  &lt;a href=&quot;http://www.pdfph.com/pdf/java/&quot;&gt;java manual&lt;/a&gt; at pdfph.com</comment>
+        <hostname>124.104.126.120</hostname>
+        <timestamp>1275986191</timestamp>
+        <score>0</score>
+        <status>0</status>
+        <format>1</format>
+        <thread>02/</thread>
+        <users>a:1:{i:0;i:0;}</users>
+        <name>Andrey Presley (Java Programmer)</name>
+        <mail>admin@pdfph.com</mail>
+        <homepage>http://www.pdfph.com</homepage>
+    </comments>
+</db254593078>

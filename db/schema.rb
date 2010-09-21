@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100903200510) do
+ActiveRecord::Schema.define(:version => 20100920205225) do
 
   create_table "comments", :force => true do |t|
     t.string   "username"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(:version => 20100903200510) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "node_id"
+    t.string   "email"
+    t.string   "homepage"
+    t.string   "subject"
+    t.string   "hostname"
   end
 
   create_table "git_repos", :force => true do |t|
