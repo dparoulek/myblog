@@ -19,9 +19,10 @@ module DrupalHelpers
         :comment => drupal_comment.at_xpath('.//comment').content,
         :subject => drupal_comment.at_xpath('.//subject').content, 
         :hostname => drupal_comment.at_xpath('.//hostname').content, 
-        :created_at => drupal_comment.at_xpath('.//timestamp').content,
-        :updated_at => drupal_comment.at_xpath('.//timestamp').content,
-        :node_id => drupal_comment.at_xpath('.//nid').content
+        :node_id => drupal_comment.at_xpath('.//nid').content,
+        # drupal dates are in millis since epoch
+        :created_at => Time.at(drupal_comment.at_xpath('.//timestamp').content),
+        :updated_at => Time.at(drupal_comment.at_xpath('.//timestamp').content)
       }
     end
   end

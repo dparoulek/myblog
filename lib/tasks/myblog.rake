@@ -31,6 +31,17 @@ namespace :myblog do
     }
   end
 
+  desc 'Careful! this will remove all comments'
+  task :remove_all_comments => :environment do 
+    environment = ENV['RAILS_ENV'] || 'development'
+    doit = ask("Are you sure you want to remove all comments in environment: '#{environment}' ? ")
+    if doit.downcase.eql? 'y'
+      Comment.delete_all
+    else
+      puts "No comments were deleted, please try again and answer 'y' if you really want to delete all comments\n"
+    end
+  end
+
   def ask message
     print message
     STDIN.gets.chomp
