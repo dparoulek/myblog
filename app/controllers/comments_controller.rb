@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
       if ENV['captcha_result'].eql? "pass"
         @recaptcha =  {'success' => true}        
       else
-        @recaptcha =  {'success' => false, 'message' => "Invalid captcha"}        
+        @recaptcha =  {'success' => false, 'message' => :invalid}        
       end
     end
 

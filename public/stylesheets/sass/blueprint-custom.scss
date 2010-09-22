@@ -71,7 +71,16 @@ div.date {
     float:left;
 }
 
-
+#errorExplanation{
+    h2 { 
+	color: red;
+    }
+    ul li { color: white; }
+    padding-left: 22px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: url(/images/exclamation.png);
+}
 
 .icon {
     padding-left: 22px;

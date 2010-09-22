@@ -2,156 +2,99 @@
   Color scheme: 
   http://colorschemedesigner.com/#3w21Hg3--w0w0
 
-Inspired by: 
-- http://gimp-tutorials.net/gimp-glow-effect
-- http://www.smashingmagazine.com/2008/02/20/45-more-excellent-blog-designs/
-- http://www.brandonmuth.com/
-*/
-
+  Inspired by: 
+  - http://gimp-tutorials.net/gimp-glow-effect
+  - http://www.smashingmagazine.com/2008/02/20/45-more-excellent-blog-designs/
+  - http://www.brandonmuth.com/
+  */
 body {
-    margin: 0px;
-    padding: 0px;
-    background: #13334a url("/images/background.png") top left no-repeat;
-    font: 13px/1.3 Verdana,"Lucida Grande",Arial,Helvetica,Sans-Serif;
-    color: #D8D8D8;
-    text-align: left; }
+  margin: 0px;
+  padding: 0px;
+  background: #13334a url("/images/background.png") top left no-repeat;
+  font: 13px/1.3 Verdana,"Lucida Grande",Arial,Helvetica,Sans-Serif;
+  color: #D8D8D8;
+  text-align: left; }
 
 a:focus, a:hover {
-    color: #A67029; 
-}
+  color: #A67029; }
 
 a {
-    color: #ffc77f;
-    text-decoration: none; }
+  color: #ffc77f;
+  text-decoration: none; }
 
 .container {
-    margin: 0px;
-    padding: 0px; 
-}
+  margin: 0px;
+  padding: 0px; }
 
 #squeeze {
-    margin: 240px 10px 20px 152px;
-    width: 646px; 
-}
+  margin: 240px 10px 20px 152px;
+  width: 646px; }
 
 #content {
-    padding-right: 15px; 
-}
-
-#content h1, #content h2, #content h3, #content h4, #content h5 {
+  padding-right: 15px; }
+  #content h1, #content h2, #content h3, #content h4, #content h5 {
     font-size: 13px;
-    color: #ffc77f; 
-}
+    color: #ffc77f; }
 
 #sidebar {
-    text-align: right; 
-}
-
-#sidebar a:focus, #sidebar a:hover {
-    color: #A67029; 
-}
-
-#sidebar a {
+  text-align: right; }
+  #sidebar a:focus, #sidebar a:hover {
+    color: #A67029; }
+  #sidebar a {
     color: #ffffff;
-    text-decoration: none; 
-}
+    text-decoration: none; }
 
 #footer {
-    margin-left: 320px; 
-}
+  margin-left: 320px; }
 
 h2.node-name a {
-    font-size: 24px; }
+  font-size: 24px; }
 
 h2#search-header {
-    font-size: 24px; }
+  font-size: 24px; }
 
 div.date {
-    font-size: 24px;
-    float: left; }
+  font-size: 24px;
+  float: left; }
+
+#errorExplanation {
+  padding-left: 22px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: url(/images/exclamation.png); }
+  #errorExplanation h2 {
+    color: red; }
+  #errorExplanation ul li {
+    color: white; }
 
 .icon {
-    padding-left: 22px;
-    background-repeat: no-repeat;
-    background-position: 0 0; }
+  padding-left: 22px;
+  background-repeat: no-repeat;
+  background-position: 0 0; }
 
 .directory {
-    background-image: url(/images/folder.png); }
+  background-image: url(/images/folder.png); }
 
 .icon-date {
-    background-image: url(/images/date.png); }
+  background-image: url(/images/date.png); }
 
 .icon-user {
-    background-image: url(/images/user.png); }
+  background-image: url(/images/user.png); }
 
 .file {
-    background-image: url(/images/page_white_text.png); }
+  background-image: url(/images/page_white_text.png); }
 
 ul#main-nav {
-    padding: 0;
-    margin: 0; }
-ul#main-nav li {
+  padding: 0;
+  margin: 0; }
+  ul#main-nav li {
     list-style: none; }
 
 #search {
-    margin-left: 322px; }
+  margin-left: 322px; }
 
 #node-contents p img {
-    border: 2px solid #BDE4FF;
-    /* border: 2px solid #A67029; */
-    float: left;
-    margin: 3px 10px 6px 0px; }
-
-textarea {
-    height: 100px;
-}
-
-
-h2#comments_header {
-    background: url("/images/comment-header.png") top left no-repeat;
-    color: #D8D8D8;
-    font-size: 24px; 
-    text-indent: -9999px;
-}
-
-ul#comments_container {
-    width: 460px;
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
-}
-
-.comment-container {
-    width: 460px;
-    margin: 10px auto;
-}
-
-.comment-top {
-    width:100%;
-    height:19px;
-    background:url("/images/comment-top.png") no-repeat left top;
-    padding: 0px;
-    margin: 0px;
-}
-
-.comment-content-container{
-    background: #0d2333;
-}
-
-.comment-content {
-    width: 420px;
-    padding:0px;
-    margin:0 20px;
-    overflow: hidden;
-}
-
-.comment-bottom {
-    height:19px;
-    background:url("/images/comment-bottom.png") no-repeat left bottom;
-    
-}
-
-.comment-author {
-    color: #FFC77F;
-}
-
+  border: 2px solid #BDE4FF;
+  /* border: 2px solid #A67029; */
+  float: left;
+  margin: 3px 10px 6px 0px; }

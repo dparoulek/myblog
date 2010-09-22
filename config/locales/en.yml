@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  
+models:
+  comment: 
+    invalid: "Wrong catpcha, dude"

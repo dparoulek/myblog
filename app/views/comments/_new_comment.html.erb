@@ -1,7 +1,6 @@
-<h3>Please leave a comment!</h3>
-
 <% form_for(@comment) do |f| %>
-  <%= f.error_messages %>
+  <%  header_message = "DOH! Unable to create new comment until the following problems are fixed:" %>
+  <%= f.error_messages({:message=>nil, :header_message=>header_message}) %>
 
   <p>
     <%= f.label :name %><br />
