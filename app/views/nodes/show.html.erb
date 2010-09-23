@@ -4,7 +4,7 @@
 <%= render(:partial => "nodes/node", :object => @node) %>
 
 
-<h2 id="comments_header">Comments</h2>
+<h2 id="comments-header">Comments</h2>
   <% @node.comments.each do |comment| %>
   <div id="comment-<%= comment.id %>" class="comment-container">
     <div class="comment-top"><span></span></div>

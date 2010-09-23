@@ -70,7 +70,7 @@ class CommentsController < ApplicationController
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         if(!@recaptcha['success'])
-          @comment.errors.add('recaptcha_response_field', @recaptcha['message'])
+          @comment.errors.add('recaptcha_response_field', :"recaptcha.invalid")
         end
         @redirect_back = back
         format.html { render :action => "new" }

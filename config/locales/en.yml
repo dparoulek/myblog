@@ -3,7 +3,17 @@
 
 en:
   hello: "Hello world"
-  
-models:
-  comment: 
-    invalid: "Wrong catpcha, dude"
+
+
+en:  
+  activerecord:
+    errors:
+      full_messages: 
+        recaptcha:
+          invalid: "{{message}}"
+      models:
+        comment:
+          attributes:
+            recaptcha_response_field:
+              recaptcha:
+                invalid: "The characters you entered didn't quite match up to the image. Please make sure to match the letters in the image exactly."

@@ -63,9 +63,9 @@ div.date {
   background-position: 0 0;
   background-image: url(/images/exclamation.png); }
   #errorExplanation h2 {
-    color: red; }
+    color: #ff7f7f; }
   #errorExplanation ul li {
-    color: white; }
+    color: #ff7f7f; }
 
 .icon {
   padding-left: 22px;
@@ -98,3 +98,36 @@ ul#main-nav {
   /* border: 2px solid #A67029; */
   float: left;
   margin: 3px 10px 6px 0px; }
+
+h2#comments-header {
+  background: url("/images/comment-header.png") top left no-repeat;
+  color: #D8D8D8;
+  font-size: 24px;
+  text-indent: -9999px; }
+
+.comment-container {
+  width: 460px;
+  margin: 10px auto; }
+
+.comment-top {
+  width: 100%;
+  height: 19px;
+  background: url("/images/comment-top.png") no-repeat left top;
+  padding: 0px;
+  margin: 0px; }
+
+.comment-content-container {
+  background: #0d2333; }
+
+.comment-content {
+  width: 420px;
+  padding: 0px;
+  margin: 0 20px;
+  overflow: hidden; }
+
+.comment-bottom {
+  height: 19px;
+  background: url("/images/comment-bottom.png") no-repeat left bottom; }
+
+.comment-author {
+  color: #FFC77F; }
