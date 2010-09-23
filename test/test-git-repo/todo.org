@@ -1,0 +1,2 @@
+* Pick up milk, bread at grocery store
+* Write 50 ruby apps in 50 days
