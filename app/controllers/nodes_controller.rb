@@ -21,9 +21,14 @@ class NodesController < ApplicationController
     else
       @node = Node.find(params[:id])
     end
+
     if(@node)
       @previous_node = @node.previous_node
       @next_node = @node.next_node
+    else
+      flash[:notice] = "Oooh Nooo, Mr. Bill! The url '#{path}' doesn't exist!"
+      redirect_to "/home"
+      return
     end
     @comment = Comment.new(:node_id => @node.id)
     @comment.node_id = @node.id
@@ -55,7 +60,9 @@ class NodesController < ApplicationController
   # POST /nodes.xml
   def create
     @node = Node.new(params[:node])
-    @node.public = true
+    if @node.name && @node.friendly_url.nil?
+      @node.friendly_url = @node.name.downcase.gsub(/ +/,'-').split('.')[0]
+    end
 
     respond_to do |format|
       if @node.save

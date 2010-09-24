@@ -4,10 +4,10 @@ Feature: Comments
   I want others to be able to provide comments
 
   Background:
-    Given I have set up a git repository by setting path to "../tmp-git-repo" and setting name to "notes"
+    Given I have set up a git repository by setting path to "." and setting name to "notes"
     And that I have registered an account using "dparoulek@gmail" as username and "test" as password
     And that I login as "dparoulek@gmail" using password "test"
-    When I create a node named "Recipes" based on "personal/cooking/grill.mkdwn"
+    When I create a node named "Recipes" based on "test/test-git-repo/personal/cooking/grill.mkdwn"
     Then I follow "Logout"
 
   Scenario: Must enter captcha to leave comment
@@ -28,7 +28,7 @@ Feature: Comments
     And I fill in "We made the sauce last night and it was delicious!" for "comment_comment"
     And I fill in an incorrect captcha
     And I press "submit"
-    Then I should see "Recaptcha response field Invalid captcha"
+    Then I should see "DOH! Unable to create new comment until the following problems are fixed:The characters you entered didn't quite match up to the image"
 
   Scenario: If comment or aptcha is entered incorrectly, then allow user to fix errors
     Given I go to the home page

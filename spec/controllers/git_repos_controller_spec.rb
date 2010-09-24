@@ -1,3 +1,4 @@
+# -*- coding: undecided -*-
 require 'spec_helper'
 require 'bloodhound/bloodhound'
 include BloodHound
@@ -141,27 +142,27 @@ describe GitReposController do
 
   describe "GET list" do
     before(:each) do
-      @path = "../tmp-git-repo"
+      @path = "."
       @repo =  GitRepo.create!(:name => "notes", :path => File.expand_path(@path))
     end
 
     it "should list folders and files from root of git repository" do
       GitRepo.stub(:find).and_return(@repo)
       post :list, :id => 1
-      assigns[:files].collect { |entry| entry.name }.should include("todo.org")
+      assigns[:files].collect { |entry| entry.name }.should include("README")
     end
 
     it "should list folders and files from root of git repository by name" do
-      params_from(:get, "/files/notes").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => []}
+      params_from(:get, "/files/notes/test/test-git-repo").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["test", "test-git-repo"]}
       GitRepo.stub(:find_by_name).and_return(@repo)
       post :list, :name => "notes", :path => []
       assigns[:dirs].length.should >= 0
     end
 
     it "should map urls to git paths" do
-      params_from(:get, "/files/notes/personal/cooking").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["personal", "cooking"]}
+      params_from(:get, "/files/notes/test/test-git-repo/personal/cooking").should == {:controller => "git_repos", :action => "list", :name => "notes", :path => ["test", "test-git-repo", "personal", "cooking"]}
       GitRepo.stub(:find_by_name).and_return(@repo)
-      post :list, :name => "notes", :path => ["personal"]
+      post :list, :name => "notes", :path => ["test", "test-git-repo", "personal"]
       assigns[:files].length.should >= 0
     end
 
@@ -174,7 +175,7 @@ describe GitReposController do
     it "should branch project before editing files"
 
     it "should display contents of files" do
-      post :list, :name => "notes", :path => ["personal", "cooking", "grill.mkdwn"]
+      post :list, :name => "notes", :path => ["test", "test-git-repo", "personal", "cooking", "grill.mkdwn"]
       assigns[:node].to_html.should include("Aunt Debbie's famous bbq sauce")
     end
   end

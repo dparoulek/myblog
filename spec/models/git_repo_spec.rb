@@ -21,9 +21,9 @@ describe GitRepo do
 
   context "that is located at '../tmp-git-repo'" do 
     before(:each) do
-      @repo = GitRepo.create!(:name => "notes", :path => File.expand_path("../tmp-git-repo"))
+      @repo = GitRepo.create!(:name => "notes", :path => File.expand_path("."))
       @filename = "grill.mkdwn"
-      @path_to_dir = "personal/cooking"
+      @path_to_dir = "test/test-git-repo/personal/cooking"
       @path_to_file = "#{@path_to_dir}/#{@filename}"
     end
 

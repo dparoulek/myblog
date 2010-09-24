@@ -57,6 +57,14 @@ class Node < ActiveRecord::Base
     end
   end
 
+  def friendly_path 
+    if self.friendly_url
+      return "/#{self.friendly_url}"
+    else 
+      return self
+    end
+  end
+
   #TODO: These methods will eventually be moved to an authentication
   #gem. And they need quite a lot of work
   

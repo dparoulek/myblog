@@ -118,12 +118,16 @@ ul#main-nav {
 	margin-left: 322px;
 }
 
-#node-contents p img {
+#node-contents p img.img-left {
 border: 2px solid #BDE4FF;
 /* border: 2px solid #A67029; */
-float: left;
 margin: 3px 10px 6px 0px;
+float:left;
 
+}
+
+.center-image {
+    float: none;
 }
 
 h2#comments-header {

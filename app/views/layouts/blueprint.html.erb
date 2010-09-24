@@ -10,7 +10,12 @@
 	<%=stylesheet_link_tag 'blueprint/ie.css', :media => "screen, projection" %>
 	<![endif]-->
     <%=stylesheet_link_tag 'blueprint-custom.css', :media => "screen, projection" %>
+    <%=stylesheet_link_tag 'syntaxhighlighter_3.0.83/shCore.css' %>
+    <%=stylesheet_link_tag 'syntaxhighlighter_3.0.83/shThemeMidnight.css' %>
+    <%=javascript_include_tag 'jquery-1.3.2.min.js'%>
     <%=javascript_include_tag 'http://www.google.com/recaptcha/api/js/recaptcha_ajax.js' %>
+    <%=javascript_include_tag 'syntaxhighlighter_3.0.83/shCore.js' %>
+    <%=javascript_include_tag 'syntaxhighlighter_3.0.83/shAutoloader.js' %>
     <%=javascript_include_tag 'blueprint/myblog-custom.js' %>
     <% if INCLUDE_GOOGLE_ANALYTICS %>
     <%=javascript_include_tag 'google-analytics.js' %>
@@ -50,7 +55,7 @@
 	  <li><%= link_to "Previous Post", @previous_node %>
 	  <% end %>
 	  <% if @next_node %>
-	  <li><%= link_to "Next Post", @next_node %>
+	  <li><%= link_to "Next Post", @next_node.friendly_path %>
 	  <% end %>
 <!-- 	  <li><a href="#">All Posts</a> -->
 	</ul>

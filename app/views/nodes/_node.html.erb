@@ -4,7 +4,7 @@
        date_format = "%Y.%m.%d" %>
   <div class="date"><%= node.publish_date.strftime(date_format) %>|</div>
   <% end %>
-  <h2 class="node-name"> <%= link_to node.name, node %></h2>
+  <h2 class="node-name"> <%= link_to node.name, node.friendly_path %></h2>
 
 <!--   <div class="icon icon-user">posted by Dave</div> -->
 </div>

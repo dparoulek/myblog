@@ -49,14 +49,14 @@ describe NodesController do
     describe "with valid params" do
       it "assigns a newly created node as @node" do
         Node.stub(:new).with({'these' => 'params'}).and_return(mock_node(:save => true))
-        mock_node.should_receive(:public=).with(true)
+        mock_node.should_receive(:name)
         post :create, :node => {:these => 'params'}
         assigns[:node].should equal(mock_node)
       end
 
       it "redirects to the created node" do
         Node.stub(:new).and_return(mock_node(:save => true))
-        mock_node.should_receive(:public=).with(true)
+        mock_node.should_receive(:name)
         post :create, :node => {}
         response.should redirect_to(node_url(mock_node))
       end
@@ -65,14 +65,14 @@ describe NodesController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved node as @node" do
         Node.stub(:new).with({'these' => 'params'}).and_return(mock_node(:save => false))
-        mock_node.should_receive(:public=).with(true)
+        mock_node.should_receive(:name)
         post :create, :node => {:these => 'params'}
         assigns[:node].should equal(mock_node)
       end
 
       it "re-renders the 'new' template" do
         Node.stub(:new).and_return(mock_node(:save => false))
-        mock_node.should_receive(:public=).with(true)
+        mock_node.should_receive(:name)
         post :create, :node => {}
         response.should render_template('new')
       end
@@ -146,9 +146,9 @@ describe NodesController do
     end
   end
 
-  describe "" do
+  describe "Friendly Urls" do
     it "should show correct node when given a friendly url" do
-      first = Node.create!(:name => "First", :public => true, :publish_date => DateTime.now, :friendly_url => "/about")
+      first = Node.create!(:name => "About", :public => true, :publish_date => DateTime.now)
       params_from(:get, "/about").should == {:controller => "nodes", :action => "show", :path => ["about"]} 
     end
   end
