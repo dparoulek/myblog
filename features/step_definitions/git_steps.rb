@@ -16,3 +16,16 @@ end
 Given /^that "([^"]*)" is not a valid git repository$/ do |path|
   GitRepo.find_by_name(path).should == nil
 end
+
+When /^fill in the current time for "([^"]*)"$/ do |field|
+  @new_content = Time.now.to_s
+  fill_in(field, :with => @new_content)
+end
+
+Then /^I should see that the file was updated with the current time$/ do
+  if response.respond_to? :should
+    response.should contain(@new_content)
+  else
+    assert_contain @new_content
+  end
+end

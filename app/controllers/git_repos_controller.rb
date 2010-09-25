@@ -1,29 +1,14 @@
 class GitReposController < ApplicationController
+  include Grit
+
   def list
-    repo = nil
-    if(params[:name])
-      logger.debug("Attemping to find git repo by name '#{params[:name]}'")
-      repo = GitRepo.find_by_name(params[:name])
-      if repo then logger.debug("Found git repo by name '#{repo.name}'") end
-    end
-
-    if(params[:id])
-      logger.debug("Attemping to find git repo by ID '#{params[:id]}'")
-      repo = GitRepo.find(params[:id])
-      if repo then logger.debug("Found git repo by ID '#{repo.id}'") end
-    end
-
+    repo = find_repo(params)
     unless(repo) 
       render :action => 'not_found'
       return
     end 
 
-    # :path is present because we have a tricky catch-all route set
-    # up. See the last entry in routes.rb. :path will be an array of
-    # subdirs. The last entry in the :path array might be a file
-    # name. '/' is actually a method on Grit:Rep that takes a path as a
-    # parameter.
-    abspath = params[:path] && !params[:path].empty? ? params[:path] * '/' : '/'
+    abspath = get_abspath(params)
     if(repo.is_a_file?(abspath))
       path = abspath
       contents = repo.getFileContents(path)
@@ -92,6 +77,45 @@ class GitReposController < ApplicationController
     @git_repo = GitRepo.find(params[:id])
   end
 
+  # Edit a file controlled by git
+  def edit_file
+    @node = Node.new(:name => params[:name], :git_repo_id => params[:git_repo_id], :git_repo_path => params[:git_repo_path])
+  end
+
+  # TODO: Probably need to add logic for what type sof things can be
+  # saved to file. Like make sure there's no source code outside of
+  # <code> tags, for example
+  #
+  # TODO: what should really happen here is it should create a branch,
+  # then change the file, then commit, and then merge so that 2 people
+  # can edit same file thru the web at the same time
+  def save_file 
+    Grit.debug = true
+    contents = params[:contents]
+    message = params[:commit_message]
+    @node = Node.new(:name => params[:name], :git_repo_id => params[:git_repo_id], :git_repo_path => params[:git_repo_path])
+    save_file_to_disk(contents, @node.abspath)
+    stage_and_commit_file(@node.repo_base_path, @node.git_repo_path, message)
+    flash[:notice] = "Created New Version"
+    render :action => :file
+  end
+
+  # Save a file controlled by git
+  def save_file_to_disk(new_content, filepath) 
+    File.open(filepath, 'w') { |f| f.write(new_content)}
+  end
+
+  # stage and commit changes 
+  def stage_and_commit_file(repo_base_path, relpath_to_file, commit_message = nil)
+    commit_message = "Updated #{relpath_to_file} via website" unless !commit_message.blank?
+    gitRepo = Repo.new(repo_base_path)
+    olddir = Dir.pwd
+    Dir.chdir(repo_base_path)
+    gitRepo.add(relpath_to_file)
+    gitRepo.commit_index(commit_message)
+    Dir.chdir(olddir)
+  end
+
   # POST /git_repos
   # POST /git_repos.xml
   def create
@@ -139,5 +163,32 @@ class GitReposController < ApplicationController
       format.html { redirect_to(git_repos_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def find_repo(params)
+    repo = nil
+    if(params[:name])
+      logger.debug("Attemping to find git repo by name '#{params[:name]}'")
+      repo = GitRepo.find_by_name(params[:name])
+      if repo then logger.debug("Found git repo by name '#{repo.name}'") end
+    end
+
+    if(params[:id])
+      logger.debug("Attemping to find git repo by ID '#{params[:id]}'")
+      repo = GitRepo.find(params[:id])
+      if repo then logger.debug("Found git repo by ID '#{repo.id}'") end
+    end
+    
+    repo
+  end
+
+  def get_abspath(params)
+    # :path is present because we have a tricky catch-all route set
+    # up. See the last entry in routes.rb. :path will be an array of
+    # subdirs. The last entry in the :path array might be a file
+    # name. '/' is actually a method on Grit:Rep that takes a path as a
+    # parameter.
+    abspath = params[:path] && !params[:path].empty? ? params[:path] * '/' : '/'
   end
 end

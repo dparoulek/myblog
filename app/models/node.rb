@@ -57,6 +57,11 @@ class Node < ActiveRecord::Base
     end
   end
 
+  def contents
+    repo = GitRepo.find(git_repo_id)
+    fcontents = repo.getFileContents(git_repo_path)
+  end
+
   def friendly_path 
     if self.friendly_url
       return "/#{self.friendly_url}"
@@ -64,6 +69,18 @@ class Node < ActiveRecord::Base
       return self
     end
   end
+
+  # calculates absolute path from git_repo and relative path to file in the git repo
+  # repo_base_path is the base path to the directory containing the .git directory
+  # self.git_repo_path is the relative path from repo_base_path to the file
+  def abspath
+    "#{repo_base_path}/#{self.git_repo_path}"
+  end
+
+  def repo_base_path
+    @repo_base_path ||= GitRepo.find(self.git_repo_id).path
+  end
+
 
   #TODO: These methods will eventually be moved to an authentication
   #gem. And they need quite a lot of work

@@ -1,3 +1,4 @@
+<%= link_to "edit", :action => "edit_file", :git_repo_id => @node.git_repo_id, :git_repo_path => @node.git_repo_path, :name => @node.name %>
 <%= render(:partial => "nodes/node", :object => @node) %>
 <% if @node.id %>
 <td><%= link_to 'Unpublish', @node, :confirm => 'This will also delete any comments lose any associations to attachments. Are you sure?', :method => :delete %></td>

@@ -32,6 +32,10 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^(?:|I )click "([^"]*)"$/ do |link|
+  click_link(link)
+end
+
 When /^(?:|I )follow "([^"]*)" within "([^"]*)"$/ do |link, parent|
   click_link_within(parent, link)
 end

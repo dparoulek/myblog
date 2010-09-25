@@ -1,0 +1,17 @@
+<h1>Editing File</h1>
+<% form_tag "/git_repos/save_file" do -%>
+  <p>
+    <%= label_tag :commit_message %><br />
+    <%= text_field_tag 'commit_message' %>
+  </p>
+  <p>
+    <%= label_tag :contents %><br />
+    <%= text_area_tag 'contents', @node.contents %>
+  </p>
+  <p>
+    <%= hidden_field_tag :name, @node.name %>
+    <%= hidden_field_tag :git_repo_id, @node.git_repo_id %>
+    <%= hidden_field_tag :git_repo_path, @node.git_repo_path %>
+    <%= submit_tag 'Update' %>
+  </p>
+<% end -%>

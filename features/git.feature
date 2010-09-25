@@ -36,5 +36,16 @@ Feature: Browse Git Repository
     Then I should see "Listing git_repos"
     And I should see "notes"
     
-
   Scenario: Syncronize notes by pulling local git repo from remote location
+
+  @dnr
+  Scenario: Able to edit and commit files thru web
+    When I visit "/files/notes/test/test-git-repo/personal/cooking/chilli-cheese-dogs.mkdwn"
+    And I click "edit"
+    And fill in the current time for "contents"
+    And fill in "Commited from cucumber" for "commit_message"
+    And I press "Update"
+    And I visit "/files/notes/test/test-git-repo/personal/cooking/chilli-cheese-dogs.mkdwn"
+    Then I should see that the file was updated with the current time
+
+  Scenario: commit as different user

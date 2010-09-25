@@ -1,3 +1,4 @@
+@slow
 Feature: Search
   In order to find notes quickly
   As a blog owner
