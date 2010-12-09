@@ -6,6 +6,8 @@
   - http://gimp-tutorials.net/gimp-glow-effect
   - http://www.smashingmagazine.com/2008/02/20/45-more-excellent-blog-designs/
   - http://www.brandonmuth.com/
+
+  Heading Font: 
   */
 
 body {
@@ -128,6 +130,51 @@ float:left;
 
 .center-image {
     float: none;
+}
+
+/* Hide text inside span inside header links */
+h4.ir a span {
+    display:block;
+    width:0;
+    height: 0;
+    overflow: hidden;
+}
+
+h4 { 
+    margin-bottom: 5px;
+}
+
+h4.home a {
+	display:block;
+	background: url("/images/main_nav_headers.png") no-repeat -64px -5px;
+	height: 23px;
+	line-height: 23px;
+	margin: 0 0 0 84px;
+}
+
+h4.about a {
+    display:block;
+    background: url("/images/main_nav_headers.png") no-repeat -60px -33px;
+    height: 23px;
+    line-height: 23px;
+    margin: 0 0 0 80px;
+}
+
+
+h4.previous a {
+    display:block;
+    background: url("/images/main_nav_headers.png") no-repeat -5px -60px;
+    height: 23px;
+    line-height: 23px;
+    margin: 0 0 0 25px;
+}
+
+h4.next a {
+    display:block;
+    background: url("/images/main_nav_headers.png") no-repeat -49px -88px;
+    height: 23px;
+    line-height: 23px;
+    margin: 0 0 0 70px;
 }
 
 h2#comments-header {

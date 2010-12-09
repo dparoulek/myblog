@@ -1,0 +1,24 @@
+<h2 id="comments-header">Comments</h2>
+  <% @node.comments.each do |comment| %>
+  <div id="comment-<%= comment.id %>" class="comment-container">
+    <div class="comment-top"><span></span></div>
+      <div class="comment-content-container">
+    <div class="comment-content">
+
+      <!-- CONTENT BEGIN -->
+      <div class="comment-author"><%= comment.username %> (<%= time_ago_in_words(comment.created_at) %> ago)</div>
+      <div class="comment-body"><%= comment.comment %></div>
+      <!-- CONTENT END -->
+
+    </div>
+      </div>
+    <div class="comment-bottom"><span></span></div>
+  </div>
+<% end %>
+
+<% if @comment %>
+<%= render(:partial => "comments/new_comment", :object => @comment) %>
+<% end %>
+<% if logged_in? %>
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<% end %>

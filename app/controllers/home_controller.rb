@@ -6,6 +6,10 @@ class HomeController < ApplicationController
     if(@node)
       @previous_node = @node.previous_node
       @next_node = @node.next_node
+
+      @comment = Comment.new(:node_id => @node.id)
+      @comment.node_id = @node.id
+      @redirect_back = request.request_uri
     end
   end
 

@@ -18,3 +18,4 @@ config.action_mailer.raise_delivery_errors = false
 
 INCLUDE_GOOGLE_ANALYTICS=false
 RECAPTCHA_ENABLED=false
+ENV['captcha_result']="pass"

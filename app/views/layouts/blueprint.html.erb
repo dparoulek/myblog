@@ -38,27 +38,24 @@
 	<%= yield %>
       </div>
       <div id="sidebar" class="span-4 last">
-<!-- 	<h1 id="logo">Upgrading Dave</h1> -->
-	<ul id="main-nav">
-	  <li><%= link_to "Home", :controller => "home", :action =>"index" %>
-          <li><a href="/about">About</a>
-	  <% if logged_in? %>
-	  <li><a href="/git_repos">Files</a>
-          <li><%= link_to 'Manage Posts', nodes_path %>
-	  <li><%= link_to "Manage Peeps", :controller => "people" %> 
-	  <li><%= link_to "Logout", :controller => "login", :action =>"logout" %> 
-	  <% end %>
-	  <% if !logged_in? %>
-	  <li><%= link_to "Login", :controller => "login", :action =>"login" %>
-	  <% end %>
+          <h4 class="home ir"><%= link_to "<span>Home</span>", :controller => "home", :action =>"index" %></h4>
+          <h4 class="about ir"><a href="/about"><span>About</span></a></h4>
 	  <% if @previous_node %>
-	  <li><%= link_to "Previous Post", @previous_node %>
+          <h4 class="previous ir"><%= link_to "<span>Previous Post</span>", @previous_node.friendly_path %></h4>
 	  <% end %>
 	  <% if @next_node %>
-	  <li><%= link_to "Next Post", @next_node.friendly_path %>
+          <h4 class="next ir"><%= link_to "<span>Next Post</span>", @next_node.friendly_path %></h4>
 	  <% end %>
-<!-- 	  <li><a href="#">All Posts</a> -->
-	</ul>
+
+	  <% if logged_in? %>
+	  <ul id="main-nav">
+	    <li><%= link_to 'Manage Posts', nodes_path %>
+	    <li><%= link_to "Manage Peeps", :controller => "people" %> 
+	    <li><%= link_to "Logout", :controller => "login", :action =>"logout" %> 
+
+	    <!-- 	  <li><a href="#">All Posts</a> -->
+	  </ul>
+	  <% end %>
       </div>
 
     </div>

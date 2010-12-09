@@ -1,5 +1,7 @@
 <% if @node %>
 <div class="articles">
   <%= render(:partial => "nodes/node", :object => @node) %>
+  <%= render(:partial => "comments/comments", :object => @node) %>
+
 </div>
 <% end %>
