@@ -30,7 +30,7 @@
 	  </form>
 	</div>
         <% end %>
-    <div id="squeeze" class="container">
+    <div id="squeeze" class="container squeeze">
       <div id="content" class="span-12">
 	<% if flash[:notice] %>
 	<div id="notice" class="img-text"><img src="/images/error.png"/><div><%=flash[:notice] %></div></div>
@@ -57,11 +57,11 @@
 	  </ul>
 	  <% end %>
       </div>
-
     </div>
-    <div id="footer">
-          <li><a href="/about">About</a> | 
-	  Copyright <%= Time.new.year %>, Dave Paroulek
-    </div>
+      <div id="footer" class="squeeze">
+	<a href="/about">About</a> | 
+	<a href="/login">Login</a> | 
+	Copyright <%= Time.new.year %>, Dave Paroulek
+      </div>
   </body>
 </html>

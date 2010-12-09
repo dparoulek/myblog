@@ -7,7 +7,7 @@
   - http://www.smashingmagazine.com/2008/02/20/45-more-excellent-blog-designs/
   - http://www.brandonmuth.com/
 
-  Heading Font: 
+  Heading Font: Magnum
   */
 
 body {
@@ -30,9 +30,13 @@ a {
     padding: 0px;
 }
 
-#squeeze {
+.squeeze {
     margin: 240px 10px 20px 152px;
     width: 646px;
+}
+
+#footer {
+    margin-top: 50px;
 }
 
 #content {
@@ -52,10 +56,6 @@ a {
 	color: #ffffff;
 	text-decoration: none;
     }
-}
-
-#footer {
-    margin-left: 320px;
 }
 
 h2.node-name {
