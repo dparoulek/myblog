@@ -47,6 +47,7 @@ Rails::Initializer.run do |config|
   # GLOBAL CONSTANTS (available to all environments)
   RECAPTCHA_PUBLIC_KEY="6LfFC70SAAAAAMv4mK45oKHnaUnTR9KuOG_u6bWA"
   RECAPTCHA_PRIVATE_KEY="6LfFC70SAAAAAE3X9cP1kFHfHZUkU_zKR5FWT_5Y"
+  RECAPTCHA_THEME="blackglass"
 
 end
 
